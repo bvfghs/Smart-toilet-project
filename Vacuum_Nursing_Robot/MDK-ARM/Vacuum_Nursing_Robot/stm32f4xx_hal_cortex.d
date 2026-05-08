@@ -1,0 +1,32 @@
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Core/Inc/stm32f4xx_hal_conf.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Include/core_cm4.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stdint.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Include/cmsis_version.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stddef.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+vacuum_nursing_robot\stm32f4xx_hal_cortex.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h

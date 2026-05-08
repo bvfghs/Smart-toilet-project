@@ -1,0 +1,40 @@
+vacuum_nursing_robot\hmi.o: ..\HardWare\SCREEN\hmi.c
+vacuum_nursing_robot\hmi.o: ../Core/Inc/main.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+vacuum_nursing_robot\hmi.o: ../Core/Inc/stm32f4xx_hal_conf.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Include/core_cm4.h
+vacuum_nursing_robot\hmi.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stdint.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Include/cmsis_version.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+vacuum_nursing_robot\hmi.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+vacuum_nursing_robot\hmi.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stddef.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+vacuum_nursing_robot\hmi.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+vacuum_nursing_robot\hmi.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stdio.h
+vacuum_nursing_robot\hmi.o: ..\HardWare\SCREEN\hmi.h
+vacuum_nursing_robot\hmi.o: ../Core/Inc/main.h
+vacuum_nursing_robot\hmi.o: ..\HardWare\SCREEN\hmi_driver.h
+vacuum_nursing_robot\hmi.o: ../Core/Inc/usart.h
+vacuum_nursing_robot\hmi.o: ..\HardWare\SCREEN\cmd_queue.h
+vacuum_nursing_robot\hmi.o: ..\HardWare\SCREEN\cmd_process.h

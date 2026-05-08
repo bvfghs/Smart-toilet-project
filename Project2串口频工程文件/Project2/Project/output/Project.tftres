@@ -1,0 +1,36 @@
+<Resource>
+    <pages>
+        <page name="首页" id="0" />
+        <page name="设备控制" id="1" />
+        <page name="记录查询" id="2" />
+        <page name="系统设置" id="3" />
+        <page name="时间设置-手动大便" id="4" />
+        <page name="时间设置-手动小便" id="5" />
+        <page name="时间设置-手动清洗" id="6" />
+        <page name="时间设置-手动干燥" id="7" />
+        <page name="时间设置-空气清洁tft" id="8" />
+        <page name="时间设置-管道清洁" id="9" />
+        <page name="调试模式" id="10" />
+    </pages>
+    <images>
+        <image id="0" url="e:\ips_stm32\data\project2\project\images\首页.PNG" effect_width="1024" effect_height="600" />
+        <image id="1" url="e:\ips_stm32\data\project2\project\images\设备控制.png" effect_width="1024" effect_height="600" />
+        <image id="2" url="e:\ips_stm32\data\project2\project\images\设备控制2.PNG" effect_width="1024" effect_height="600" />
+        <image id="3" url="e:\ips_stm32\data\project2\project\Images\手动模式按钮.png" effect_width="160" effect_height="63" />
+        <image id="4" url="e:\ips_stm32\data\project2\project\images\系统设置.PNG" effect_width="1024" effect_height="600" />
+        <image id="5" url="e:\ips_stm32\data\project2\project\images\系统设置2.PNG" effect_width="1024" effect_height="600" />
+        <image id="6" url="e:\ips_stm32\data\project2\project\Images\工作时间设置按钮.png" effect_width="137" effect_height="48" />
+        <image id="7" url="e:\ips_stm32\data\project2\project\images\大便.PNG" effect_width="1024" effect_height="600" />
+        <image id="8" url="e:\ips_stm32\data\project2\project\Images\上下页按钮.png" effect_width="179" effect_height="52" />
+        <image id="9" url="e:\ips_stm32\data\project2\project\images\工作时间设置按钮按下图片.png" effect_width="1024" effect_height="600" />
+        <image id="10" url="e:\ips_stm32\data\project2\project\images\小便.PNG" effect_width="1024" effect_height="600" />
+        <image id="11" url="e:\ips_stm32\data\project2\project\images\清洗.PNG" effect_width="1024" effect_height="600" />
+        <image id="12" url="e:\ips_stm32\data\project2\project\images\干燥.PNG" effect_width="1024" effect_height="600" />
+        <image id="13" url="e:\ips_stm32\data\project2\project\images\空气清洁.PNG" effect_width="1024" effect_height="600" />
+        <image id="14" url="e:\ips_stm32\data\project2\project\images\管道清洗.PNG" effect_width="1024" effect_height="600" />
+        <image id="15" url="e:\ips_stm32\data\project2\project\images\调试模式-1.png" effect_width="1024" effect_height="600" />
+        <image id="16" url="e:\ips_stm32\data\project2\project\images\调试模式-2.png" effect_width="1024" effect_height="600" />
+        <image id="17" url="e:\ips_stm32\data\project2\project\Images\调试模式按钮.png" effect_width="161" effect_height="64" />
+    </images>
+    <waves />
+</Resource>
