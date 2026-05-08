@@ -32,7 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
-
+#include "string.h"
 #include "hmi.h"
 /* USER CODE END Includes */
 
@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define H_vacuum_fan_Pin GPIO_PIN_2
+#define H_vacuum_fan_GPIO_Port GPIOB
 #define water_hot_Pin GPIO_PIN_7
 #define water_hot_GPIO_Port GPIOE
 #define vacuum_fan_Pin GPIO_PIN_8

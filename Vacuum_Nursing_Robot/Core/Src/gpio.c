@@ -47,10 +47,13 @@ void MX_GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(H_vacuum_fan_GPIO_Port, H_vacuum_fan_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, water_hot_Pin|vacuum_fan_Pin|hot_fan_Pin|fan_hot_Pin
@@ -60,6 +63,13 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOD, valve_7_Pin|valve_8_Pin|valve_9_Pin|valve_10_Pin
                           |air_fan_Pin|anion_Pin|valve_1_Pin|valve_2_Pin
                           |valve_3_Pin|valve_4_5_Pin|valve_6_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : H_vacuum_fan_Pin */
+  GPIO_InitStruct.Pin = H_vacuum_fan_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(H_vacuum_fan_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : water_hot_Pin vacuum_fan_Pin hot_fan_Pin fan_hot_Pin
                            RO_pump_Pin S_RO_pump_Pin */

@@ -23,30 +23,29 @@
 
 
 uint8_t uart_rx_buf;
-#define TIME_100MS 10                                                                //100毫秒(10个单位)
+ extern volatile  uint32 timer_tick_count;                              
 
  volatile uint8_t  debug_rx_byte=0 ;
  volatile uint8_t  debug_print_flag=0 ;
 
 
-volatile uint32  timer_tick_count = 0;                                               //定时器节拍
 
 uint8  cmd_buffer[CMD_MAX_SIZE];                                                     //指令缓存
-static uint16 current_screen_id = 0;                                                 //当前画面ID
-static int32 progress_value = 0;                                                     //进度条测试值
-static int32 test_value = 0;                                                         //测试值
-static uint8 update_en = 0;                                                          //更新标记
-static int32 meter_flag = 0;                                                         //仪表指针往返标志位
-static int32 num = 0;                                                                //曲线采样点计数
+//static uint16 current_screen_id = 0;                                                 //当前画面ID
+//static int32 progress_value = 0;                                                     //进度条测试值
+//static int32 test_value = 0;                                                         //测试值
+//static uint8 update_en = 0;                                                          //更新标记
+//static int32 meter_flag = 0;                                                         //仪表指针往返标志位
+//static int32 num = 0;                                                                //曲线采样点计数
 static int sec = 1;                                                                  //时间秒
-static int32 curves_type = 0;                                                        //曲线标志位  0为正弦波，1为锯齿波                  
-static int32 second_flag=0;                                                          //时间标志位
-static int32 icon_flag = 0;                                                          //图标标志位
-static uint8 Select_H ;                                                              //滑动选择小时
-static uint8 Select_M ;                                                              //滑动选择分钟 
-static uint8 Last_H ;                                                                //上一个选择小时
-static uint8 Last_M;                                                                 //上一个选择分钟 
-static int32 Progress_Value = 0;                                                     //进度条的值 
+//static int32 curves_type = 0;                                                        //曲线标志位  0为正弦波，1为锯齿波                  
+//static int32 second_flag=0;                                                          //时间标志位
+//static int32 icon_flag = 0;                                                          //图标标志位
+//static uint8 Select_H ;                                                              //滑动选择小时
+//static uint8 Select_M ;                                                              //滑动选择分钟 
+//static uint8 Last_H ;                                                                //上一个选择小时
+//static uint8 Last_M;                                                                 //上一个选择分钟 
+//static int32 Progress_Value = 0;                                                     //进度条的值 
 
 void UpdateUI(void);                                                                 //更新UI数据
 
@@ -150,7 +149,7 @@ void ProcessMessage( PCTRL_MSG msg, uint16 size )
 */
 void NOTIFYHandShake(void)
 {
-   SetButtonValue(3,2,1);
+   //SetButtonValue(3,2,1);
 }
 
 /*! 
@@ -160,58 +159,58 @@ void NOTIFYHandShake(void)
 */
 void NotifyScreen(uint16 screen_id)
 {
-    //TODO: 添加用户代码
-    current_screen_id = screen_id;                                                   //在工程配置中开启画面切换通知，记录当前画面ID
+//    //TODO: 添加用户代码
+//    current_screen_id = screen_id;                                                   //在工程配置中开启画面切换通知，记录当前画面ID
 
-    //进到画面3亮起一个按钮
-    if(screen_id == 3)
-    {
-        SetButtonValue(3,1,1);
-    }
-    //进到画面自动播放GIF
-    if(current_screen_id == 9)
-    {
-        AnimationStart(9,1);                                                         //动画开始播放
-    }
-       //进到进度条界面获取当前文本值
-    if(current_screen_id==5)                                   
-    {
-        GetControlValue(5,1);
-    }
-    //进到二维码页面生成二维码
-    if(current_screen_id==14)                                   
-    {
-        //二维码控件显示中文字符时，需要转换为UTF8编码，
-        //通过“指令助手”，转换“www.gz-dc.com” ，得到字符串编码如下
-        uint8 dat[] = {0x77,0x77,0x77,0x2E,0x67,0x7A,0x2D,0x64,0x63,0x2E,0x63,0x6F,0x6D};
-        SetTextValue(14,1,dat);                                                      //发送二维码字符编码                     
-    }
+//    //进到画面3亮起一个按钮
+//    if(screen_id == 3)
+//    {
+//        SetButtonValue(3,1,1);
+//    }
+//    //进到画面自动播放GIF
+//    if(current_screen_id == 9)
+//    {
+//        AnimationStart(9,1);                                                         //动画开始播放
+//    }
+//       //进到进度条界面获取当前文本值
+//    if(current_screen_id==5)                                   
+//    {
+//        GetControlValue(5,1);
+//    }
+//    //进到二维码页面生成二维码
+//    if(current_screen_id==14)                                   
+//    {
+//        //二维码控件显示中文字符时，需要转换为UTF8编码，
+//        //通过“指令助手”，转换“www.gz-dc.com” ，得到字符串编码如下
+//        uint8 dat[] = {0x77,0x77,0x77,0x2E,0x67,0x7A,0x2D,0x64,0x63,0x2E,0x63,0x6F,0x6D};
+//        SetTextValue(14,1,dat);                                                      //发送二维码字符编码                     
+//    }
 
-    //数据记录显示
-    if(current_screen_id == 15)
-    {
-        Record_SetEvent(15,1,0,0);  
-        Record_SetEvent(15,1,1,0);
-        Record_SetEvent(15,1,2,0);
-        Record_SetEvent(15,1,3,0);
-        Record_SetEvent(15,1,4,0);
-        Record_SetEvent(15,1,5,0);
-        Record_SetEvent(15,1,6,0);
-        Record_SetEvent(15,1,7,0);
-        //delay_ms(2000);                                                              //延时两秒
-        HAL_Delay(2000);
-		Record_ResetEvent(15,1,0,0);
-        Record_ResetEvent(15,1,1,0);
-        Record_ResetEvent(15,1,2,0);
+//    //数据记录显示
+//    if(current_screen_id == 15)
+//    {
+//        Record_SetEvent(15,1,0,0);  
+//        Record_SetEvent(15,1,1,0);
+//        Record_SetEvent(15,1,2,0);
+//        Record_SetEvent(15,1,3,0);
+//        Record_SetEvent(15,1,4,0);
+//        Record_SetEvent(15,1,5,0);
+//        Record_SetEvent(15,1,6,0);
+//        Record_SetEvent(15,1,7,0);
+//        //delay_ms(2000);                                                              //延时两秒
+//        HAL_Delay(2000);
+//		Record_ResetEvent(15,1,0,0);
+//        Record_ResetEvent(15,1,1,0);
+//        Record_ResetEvent(15,1,2,0);
 
-    }
-    //进入音乐画面自动播放
-    if(current_screen_id == 17)   
-    {
-         uint8 buffer[6] = {0x90,0x01 ,0x00 ,0x01 ,0x01};
-         SetButtonValue(17,3,1);
-         PlayMusic(buffer);                                                           //播放音乐
-    }
+//    }
+//    //进入音乐画面自动播放
+//    if(current_screen_id == 17)   
+//    {
+//         uint8 buffer[6] = {0x90,0x01 ,0x00 ,0x01 ,0x01};
+//         SetButtonValue(17,3,1);
+//         PlayMusic(buffer);                                                           //播放音乐
+//    }
 }
 
 /*! 
@@ -231,217 +230,217 @@ void NotifyTouchXY(uint8 press,uint16 x,uint16 y)
 */ 
 void UpdateUI()
 {
-	if(current_screen_id==0)
-	{
-		SetTextValue(0,1,"机房2");
-		SetTextValue(0,6,"123");
-		//SetTextInt32(1,1,123,0,1);                                      
-	}
-    if(current_screen_id == 0)      
-    { 
-		//正弦数组
-		uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
-			19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-			140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-			236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-			245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-			158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-			33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
-			19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-			140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-			236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-			245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-			158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-			33,29,25,22,19,15,13,10,8,6,4,3,2};
+//	if(current_screen_id==0)
+//	{
+//		SetTextValue(0,1,"机房2");
+//		SetTextValue(0,6,"123");
+//		//SetTextInt32(1,1,123,0,1);                                      
+//	}
+//    if(current_screen_id == 0)      
+//    { 
+//		//正弦数组
+//		uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
+//			19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//			140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//			236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//			245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//			158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//			33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
+//			19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//			140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//			236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//			245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//			158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//			33,29,25,22,19,15,13,10,8,6,4,3,2};
 
-		GraphChannelDataAdd(0,3,0,&sin[num],2);                                    //添加数据到曲线  一次两个数据
+//		GraphChannelDataAdd(0,3,0,&sin[num],2);                                    //添加数据到曲线  一次两个数据
 
-		num += 2;                                                                        
-		if(num >= 255)                                                                
-		{                                                                             
-			num =0;                                                                  
-		}
-	}
-		
-    //文本设置和显示  定时20ms刷新一次
-    if(current_screen_id==4)                                              
-    {
-        //当前电流、温度从0到1000循环显示，艺术字从0-999循环显示
-        SetTextInt32(4,6,test_value%1000,0,1);                                      //当前电流
-        SetTextInt32(4,7,test_value%1000,0,1);                                      //艺术字
-        SetTextValue(4,1,"机房10");                                                 //设置文本值
-  
-        test_value++;                                                                
-        if(test_value >= 1000)                                                       
-        {                                                                            
-            test_value = 0;                                                            
-        }                                                                            
-        if(test_value>0&&test_value<500)                                             //大于0小于500文本显示红色
-        {                                                                            
-            SetControlBackColor(4,6,0xF800);                                         //设置文本背景色
-        }                                                                            
-        else if(test_value>=500)                                                     //大于500文本显蓝色
-        {                                                                            
-            SetControlBackColor(4,6,0x001F);                                         //设置文本背景色
-        }                                                                            
-    }                                                                                
+//		num += 2;                                                                        
+//		if(num >= 255)                                                                
+//		{                                                                             
+//			num =0;                                                                  
+//		}
+//	}
+//		
+//    //文本设置和显示  定时20ms刷新一次
+//    if(current_screen_id==4)                                              
+//    {
+//        //当前电流、温度从0到1000循环显示，艺术字从0-999循环显示
+//        SetTextInt32(4,6,test_value%1000,0,1);                                      //当前电流
+//        SetTextInt32(4,7,test_value%1000,0,1);                                      //艺术字
+//        SetTextValue(4,1,"机房10");                                                 //设置文本值
+//  
+//        test_value++;                                                                
+//        if(test_value >= 1000)                                                       
+//        {                                                                            
+//            test_value = 0;                                                            
+//        }                                                                            
+//        if(test_value>0&&test_value<500)                                             //大于0小于500文本显示红色
+//        {                                                                            
+//            SetControlBackColor(4,6,0xF800);                                         //设置文本背景色
+//        }                                                                            
+//        else if(test_value>=500)                                                     //大于500文本显蓝色
+//        {                                                                            
+//            SetControlBackColor(4,6,0x001F);                                         //设置文本背景色
+//        }                                                                            
+//    }                                                                                
 
-    //仪表控件   定时20ms刷新一次                                                   
-    if(current_screen_id == 6)                                                                          
-    {                                                                               
-        if(meter_flag == 0)                                                          //标志位 0顺时针 ，1逆时针
-        {   
-            //顺时针旋转                    
-            SetMeterValue(6,1,test_value);                                           //设置图片指针旋转角度
-            test_value +=1;                                                          //指针旋转从0度到260度
-            if(test_value >= 260)                                                   
-            {                                                                        
-                test_value = 260;                                                     
-                meter_flag = 1;                                                             
-            }                                                                        
-        }                                                                          
-        else if(meter_flag == 1)                                                               
-        {    
-            //逆时针旋转              
-            Set_picMeterValue(6,1,test_value);                                       //设置图片指针旋转角度
-            test_value -=1;                                                          //指针旋转从260度到0度
-            if(test_value <= 0)
-            {
-                test_value = 0;
-                meter_flag = 0;    
-            }
-        }
-    }
+//    //仪表控件   定时20ms刷新一次                                                   
+//    if(current_screen_id == 6)                                                                          
+//    {                                                                               
+//        if(meter_flag == 0)                                                          //标志位 0顺时针 ，1逆时针
+//        {   
+//            //顺时针旋转                    
+//            SetMeterValue(6,1,test_value);                                           //设置图片指针旋转角度
+//            test_value +=1;                                                          //指针旋转从0度到260度
+//            if(test_value >= 260)                                                   
+//            {                                                                        
+//                test_value = 260;                                                     
+//                meter_flag = 1;                                                             
+//            }                                                                        
+//        }                                                                          
+//        else if(meter_flag == 1)                                                               
+//        {    
+//            //逆时针旋转              
+//            Set_picMeterValue(6,1,test_value);                                       //设置图片指针旋转角度
+//            test_value -=1;                                                          //指针旋转从260度到0度
+//            if(test_value <= 0)
+//            {
+//                test_value = 0;
+//                meter_flag = 0;    
+//            }
+//        }
+//    }
 
-    //图标1s轮流显示 
-    if(current_screen_id == 10)
-    {
-        if(timer_tick_count %100 == 0 && icon_flag == 0)       
-         {        
-             SetButtonValue(10,5,0); 
-             SetButtonValue(10,2,1);                                                      //工作中图标
-             AnimationPlayFrame(10,1,0);
-             icon_flag = 1 ;            
-         }
-         else if(timer_tick_count %100 == 0 && icon_flag == 1)
-         {
-             SetButtonValue(10,2,0);                                                      
-             SetButtonValue(10,3,1);                                                      //暂停中图标
-             AnimationPlayFrame(10,1,1);  
-             icon_flag = 2;             
-         }
-         else if(timer_tick_count %100 == 0 && icon_flag == 2)
-         {
-             SetButtonValue(10,3,0);                                                      
-             SetButtonValue(10,4,1);                                                      //停止图标
-             AnimationPlayFrame(10,1,2);  
-             icon_flag = 3 ;            
-         }
-         else if(timer_tick_count %100 == 0 && icon_flag == 3)
-         {        
-             SetButtonValue(10,4,0);                                                                                                                  
-             SetButtonValue(10,5,1);                                                      //隐藏图标
-             AnimationPlayFrame(10,1,3);  
-             icon_flag  = 0 ;              
-         }
-    }
-
-
-    //实时曲线，正弦波数组。  定时20ms更新数据
-    if(current_screen_id == 11)      
-    { 
-        if(curves_type == 0)
-        {
-            //正弦数组
-            uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
-                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-                33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
-                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-                33,29,25,22,19,15,13,10,8,6,4,3,2};
-
-            GraphChannelDataAdd(11,1,0,&sin[num],2);                                    //添加数据到曲线  一次两个数据
-
-            num += 2;                                                                        
-            if(num >= 255)                                                                
-            {                                                                             
-                num =0;                                                                  
-            }
-        } 
-        else if(curves_type == 1)
-        {
-            //锯齿波数组
-            uint8 sawtooth[180] = {0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252};
+//    //图标1s轮流显示 
+//    if(current_screen_id == 10)
+//    {
+//        if(timer_tick_count %100 == 0 && icon_flag == 0)       
+//         {        
+//             SetButtonValue(10,5,0); 
+//             SetButtonValue(10,2,1);                                                      //工作中图标
+//             AnimationPlayFrame(10,1,0);
+//             icon_flag = 1 ;            
+//         }
+//         else if(timer_tick_count %100 == 0 && icon_flag == 1)
+//         {
+//             SetButtonValue(10,2,0);                                                      
+//             SetButtonValue(10,3,1);                                                      //暂停中图标
+//             AnimationPlayFrame(10,1,1);  
+//             icon_flag = 2;             
+//         }
+//         else if(timer_tick_count %100 == 0 && icon_flag == 2)
+//         {
+//             SetButtonValue(10,3,0);                                                      
+//             SetButtonValue(10,4,1);                                                      //停止图标
+//             AnimationPlayFrame(10,1,2);  
+//             icon_flag = 3 ;            
+//         }
+//         else if(timer_tick_count %100 == 0 && icon_flag == 3)
+//         {        
+//             SetButtonValue(10,4,0);                                                                                                                  
+//             SetButtonValue(10,5,1);                                                      //隐藏图标
+//             AnimationPlayFrame(10,1,3);  
+//             icon_flag  = 0 ;              
+//         }
+//    }
 
 
-            GraphChannelDataAdd(11,1,0,&sawtooth[num],2);                              //添加数据到曲线  一次两个数据
-            num +=2 ;                                                                        
-            if(num >= 180)                                                                
-            {                                                                             
-                num =0;                                                                  
-            }
-        }          
-    }                                                                              
+//    //实时曲线，正弦波数组。  定时20ms更新数据
+//    if(current_screen_id == 11)      
+//    { 
+//        if(curves_type == 0)
+//        {
+//            //正弦数组
+//            uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
+//                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//                33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
+//                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//                33,29,25,22,19,15,13,10,8,6,4,3,2};
 
-    //历时曲线，正弦波数组                                                         
-    if(current_screen_id == 16 && timer_tick_count %100 == 0)                           //历史曲线控件采样周期1s一个点。//一次添加五个数据                                                    
-    {   
-        if(curves_type == 0)
-        {        
-            //正弦数组
-            uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
-                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-                33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
-                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
-                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
-                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
-                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
-                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
-                33,29,25,22,19,15,13,10,8,6,4,3,2}; 
+//            GraphChannelDataAdd(11,1,0,&sin[num],2);                                    //添加数据到曲线  一次两个数据
 
-            HistoryGraph_SetValueInt8(16,1,&sin[num],1);                               //添加历史曲线数据         
-            num++;
-            if(num >= 255)
-            {
-                num =0;
-            }
-        } 
-        else if(curves_type == 1)
-        {          
-            //锯齿波数组
-            uint8 sawtooth[180] = {0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
-                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252};
-
-            HistoryGraph_SetValueInt8(16,1,&sawtooth[num],1);                          //添加历史曲线数据        
-            num++;
-            if(num >= 90)
-            {
-                num =0;
-            }
-        } 
+//            num += 2;                                                                        
+//            if(num >= 255)                                                                
+//            {                                                                             
+//                num =0;                                                                  
+//            }
+//        } 
+//        else if(curves_type == 1)
+//        {
+//            //锯齿波数组
+//            uint8 sawtooth[180] = {0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252};
 
 
-    }
+//            GraphChannelDataAdd(11,1,0,&sawtooth[num],2);                              //添加数据到曲线  一次两个数据
+//            num +=2 ;                                                                        
+//            if(num >= 180)                                                                
+//            {                                                                             
+//                num =0;                                                                  
+//            }
+//        }          
+//    }                                                                              
+
+//    //历时曲线，正弦波数组                                                         
+//    if(current_screen_id == 16 && timer_tick_count %100 == 0)                           //历史曲线控件采样周期1s一个点。//一次添加五个数据                                                    
+//    {   
+//        if(curves_type == 0)
+//        {        
+//            //正弦数组
+//            uint8 sin[256] = {1,1,1,1,1,2,3,4,6,8,10,13,15,
+//                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//                33,29,25,22,19,15,13,10,8,6,4,3,2,1,1,1,1,1,2,3,4,6,8,10,13,15,
+//                19,22,25,29,33,38,42,47,52,57,62,68,73,79,85,91,97,103,109,115,121,127,134,
+//                140,146,152,158,164,170,176,182,187,193,198,203,208,213,217,222,226,230,233,
+//                236,240,242,245,247,249,251,252,253,254,254,254,254,254,253,252,251,249,247,
+//                245,242,240,236,233,230,226,222,217,213,208,203,198,193,187,182,176,170,164,
+//                158,152,146,140,134,128,121,115,109,103,97,91,85,79,73,68,62,57,52,47,42,38,
+//                33,29,25,22,19,15,13,10,8,6,4,3,2}; 
+
+//            HistoryGraph_SetValueInt8(16,1,&sin[num],1);                               //添加历史曲线数据         
+//            num++;
+//            if(num >= 255)
+//            {
+//                num =0;
+//            }
+//        } 
+//        else if(curves_type == 1)
+//        {          
+//            //锯齿波数组
+//            uint8 sawtooth[180] = {0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252,
+//                0,9,18,27,36,45,54,63,72,81,90,99,108,117,126,135,144,153,162,171,180,189,198,207,216,225,234,243,252};
+
+//            HistoryGraph_SetValueInt8(16,1,&sawtooth[num],1);                          //添加历史曲线数据        
+//            num++;
+//            if(num >= 90)
+//            {
+//                num =0;
+//            }
+//        } 
+
+
+//    }
 
 }
 
@@ -455,99 +454,204 @@ void UpdateUI()
 */
 void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 { 
-	if(screen_id == 0)
-	{
-		if(control_id==7)
-		{
-			printf("button 1\r\n");
-			if(state==1)
-			{HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,1);}
-			else
-      {HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,0);}
-			
-		}
-		else if(control_id==9)
-		{
-			printf("button 2\r\n");
-			
-			if(state==1)
-			{HAL_GPIO_TogglePin(valve_1_GPIO_Port,valve_1_Pin);}
-			
-		}
+	if(screen_id == 10){        
+						 if(control_id==1){        //阀1按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_1_GPIO_Port, valve_1_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_1_GPIO_Port, valve_1_Pin, GPIO_PIN_RESET);}
+					}
+
+					if(control_id==2){        //阀2按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_2_GPIO_Port, valve_2_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_2_GPIO_Port, valve_2_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==3){        //阀3按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_3_GPIO_Port, valve_3_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_3_GPIO_Port, valve_3_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==4){        //阀4-5按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_4_5_GPIO_Port, valve_4_5_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_4_5_GPIO_Port, valve_4_5_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==5){        //阀6按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_6_GPIO_Port, valve_6_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_6_GPIO_Port, valve_6_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==6){        //阀7按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_7_GPIO_Port, valve_7_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_7_GPIO_Port, valve_7_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==7){        //阀8按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_8_GPIO_Port, valve_8_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_8_GPIO_Port, valve_8_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==8){        //阀9按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_9_GPIO_Port, valve_9_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_9_GPIO_Port, valve_9_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==9){        //阀10按键控制
+							if(state==1){ HAL_GPIO_WritePin(valve_10_GPIO_Port, valve_10_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(valve_10_GPIO_Port, valve_10_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==10){       //室内循环风机按键控制
+							if(state==1){ HAL_GPIO_WritePin(air_fan_GPIO_Port, air_fan_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(air_fan_GPIO_Port, air_fan_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==11){       //负离子发生器按键控制
+							if(state==1){ HAL_GPIO_WritePin(anion_GPIO_Port, anion_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(anion_GPIO_Port, anion_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==12){       //高转速微真空泵按键控制
+							if(state==1){ HAL_GPIO_WritePin(H_vacuum_fan_GPIO_Port, H_vacuum_fan_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(H_vacuum_fan_GPIO_Port, H_vacuum_fan_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==13){       //强真空泵按键控制
+							if(state==1){ HAL_GPIO_WritePin(vacuum_fan_GPIO_Port, vacuum_fan_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(vacuum_fan_GPIO_Port, vacuum_fan_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==14){       //暖风机按键控制
+							if(state==1){ HAL_GPIO_WritePin(hot_fan_GPIO_Port, hot_fan_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(hot_fan_GPIO_Port, hot_fan_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==15){       //暖风机加热按键控制
+							if(state==1){ HAL_GPIO_WritePin(fan_hot_GPIO_Port, fan_hot_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(fan_hot_GPIO_Port, fan_hot_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==16){       //大RO泵按键控制
+							if(state==1){ HAL_GPIO_WritePin(RO_pump_GPIO_Port, RO_pump_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(RO_pump_GPIO_Port, RO_pump_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==17){       //小RO泵按键控制
+							if(state==1){ HAL_GPIO_WritePin(S_RO_pump_GPIO_Port, S_RO_pump_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(S_RO_pump_GPIO_Port, S_RO_pump_Pin, GPIO_PIN_RESET); }
+					}
+
+					if(control_id==18){       //厚膜加热器按键控制
+							if(state==1){ HAL_GPIO_WritePin(water_hot_GPIO_Port, water_hot_Pin, GPIO_PIN_SET); }
+							else        { HAL_GPIO_WritePin(water_hot_GPIO_Port, water_hot_Pin, GPIO_PIN_RESET); }
+					}
 	}
-    //按键控制曲线波形
-    if(screen_id == 11)
-    {
-        if(control_id==2)                                                            //正弦波控件
-        {
-            curves_type = 0;                                                                
-        }
-        else if(control_id==3)                                                       //锯齿波控件
-        {
-            curves_type = 1;
-        }   
-    }
-    //时间画面按钮获取RTC时间
-    if(screen_id == 8)
-    {
-        if(control_id==8 && state == 1)                                              //获取时间
-        {
-            ReadRTC();                                                              
-        }
-    }
-        //选择控件显示时间段
-     if(screen_id == 13 && control_id==4)
-     {
-         if(Select_H>=0&&Select_H<=6)                                                       //0~6小时，凌晨  
-        {     
-            SetSelectorValue(13,3,0);                                                       //设置选择控件选项  
-        }                                        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	if(screen_id == 0)
+//	{
+//		if(control_id==7)
+//		{
+//			printf("button 1\r\n");
+//			if(state==1)
+//			{HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,1);}
+//			else
+//      {HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,0);}
+//			
+//		}
+//		else if(control_id==9)
+//		{
+//			printf("button 2\r\n");
+//			
+//			if(state==1)
+//			{HAL_GPIO_TogglePin(valve_1_GPIO_Port,valve_1_Pin);}
+//			
+//		}
+//	}
+//    //按键控制曲线波形
+//    if(screen_id == 11)
+//    {
+//        if(control_id==2)                                                            //正弦波控件
+//        {
+//            curves_type = 0;                                                                
+//        }
+//        else if(control_id==3)                                                       //锯齿波控件
+//        {
+//            curves_type = 1;
+//        }   
+//    }
+//    //时间画面按钮获取RTC时间
+//    if(screen_id == 8)
+//    {
+//        if(control_id==8 && state == 1)                                              //获取时间
+//        {
+//            ReadRTC();                                                              
+//        }
+//    }
+//        //选择控件显示时间段
+//     if(screen_id == 13 && control_id==4)
+//     {
+//         if(Select_H>=0&&Select_H<=6)                                                       //0~6小时，凌晨  
+//        {     
+//            SetSelectorValue(13,3,0);                                                       //设置选择控件选项  
+//        }                                        
 
-        else if(Select_H>=7&&Select_H<=12)                                                  //7~12小时，上午
-        {
-            SetSelectorValue(13,3,1);
-        }         
+//        else if(Select_H>=7&&Select_H<=12)                                                  //7~12小时，上午
+//        {
+//            SetSelectorValue(13,3,1);
+//        }         
 
-        else if(Select_H>=13&&Select_H<=18)                                                 //13~18小时，下午
-        { 
-            SetSelectorValue(13,3,2);
-        }    
+//        else if(Select_H>=13&&Select_H<=18)                                                 //13~18小时，下午
+//        { 
+//            SetSelectorValue(13,3,2);
+//        }    
 
-        else if(Select_H>18&&Select_H<=23)                                                  //19~23小时，深夜
-        {
-            SetSelectorValue(13,3,3);
-        }   
-         Last_H   = Select_H;   
-         Last_M   = Select_M;                 
-     }
-     if(screen_id == 13 && control_id==5)
-     {
-          SetSelectorValue(13,1,Last_H);
-          SetSelectorValue(13,2,Last_M);
-     }
-     if(screen_id == 5)
-    {
-        if(control_id==3)                                                            //递减
-        {
-            Progress_Value -= 1; 
-            if(Progress_Value <= 0)
-            {
-                Progress_Value = 0;
-            }                
-            SetProgressValue(5,1,Progress_Value);                                    //设置进度条的值
-            SetTextInt32(5,2,Progress_Value,0,1);                                    //设置文本框的值
-        }
-        else if(control_id==4)                                                       //递加
-        {
-            Progress_Value += 1;
-            if(Progress_Value >= 100)
-            {
-                Progress_Value = 100;
-            }
-            SetProgressValue(5,1,Progress_Value);
-            SetTextInt32(5,2,Progress_Value,0,1);
-        }   
-    }
+//        else if(Select_H>18&&Select_H<=23)                                                  //19~23小时，深夜
+//        {
+//            SetSelectorValue(13,3,3);
+//        }   
+//         Last_H   = Select_H;   
+//         Last_M   = Select_M;                 
+//     }
+//     if(screen_id == 13 && control_id==5)
+//     {
+//          SetSelectorValue(13,1,Last_H);
+//          SetSelectorValue(13,2,Last_M);
+//     }
+//     if(screen_id == 5)
+//    {
+//        if(control_id==3)                                                            //递减
+//        {
+//            Progress_Value -= 1; 
+//            if(Progress_Value <= 0)
+//            {
+//                Progress_Value = 0;
+//            }                
+//            SetProgressValue(5,1,Progress_Value);                                    //设置进度条的值
+//            SetTextInt32(5,2,Progress_Value,0,1);                                    //设置文本框的值
+//        }
+//        else if(control_id==4)                                                       //递加
+//        {
+//            Progress_Value += 1;
+//            if(Progress_Value >= 100)
+//            {
+//                Progress_Value = 100;
+//            }
+//            SetProgressValue(5,1,Progress_Value);
+//            SetTextInt32(5,2,Progress_Value,0,1);
+//        }   
+//    }
      
 }
 
@@ -562,25 +666,25 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 */
 void NotifyText(uint16 screen_id, uint16 control_id, uint8 *str)
 {
-    if(screen_id==4)                                                                 //画面ID2：文本设置和显示
-    {                                                                            
-        int32 value=0;                                                            
-        sscanf(str,"%ld",&value);                                                    //把字符串转换为整数 
-        if(control_id==2)                                                            //最高电压
-        {                                                                         
-            //限定数值范围（也可以在文本控件属性中设置）                             
-            if(value<0)                                                              
-            {                                                                        
-                value = 0;                                                            
-            }                                                                        
-            else if(value>380)                                                       
-            {                                                                        
-                value = 380;                                                           
-            }                                                                        
-            SetTextInt32(4,2,value,0,1);                                             //更新最高电压
-            SetTextInt32(4,5,value/2,1,1);                                           //更新最高电压/2
-        }                                                                         
-    }                                                                            
+//    if(screen_id==4)                                                                 //画面ID2：文本设置和显示
+//    {                                                                            
+//        int32 value=0;                                                            
+//        sscanf(str,"%ld",&value);                                                    //把字符串转换为整数 
+//        if(control_id==2)                                                            //最高电压
+//        {                                                                         
+//            //限定数值范围（也可以在文本控件属性中设置）                             
+//            if(value<0)                                                              
+//            {                                                                        
+//                value = 0;                                                            
+//            }                                                                        
+//            else if(value>380)                                                       
+//            {                                                                        
+//                value = 380;                                                           
+//            }                                                                        
+//            SetTextInt32(4,2,value,0,1);                                             //更新最高电压
+//            SetTextInt32(4,5,value/2,1,1);                                           //更新最高电压/2
+//        }                                                                         
+//    }                                                                            
 }                                                                                
 
 /*!                                                                              
@@ -592,11 +696,11 @@ void NotifyText(uint16 screen_id, uint16 control_id, uint8 *str)
 */                                                                              
 void NotifyProgress(uint16 screen_id, uint16 control_id, uint32 value)           
 {  
-    if(screen_id == 5)
-    {
-        Progress_Value = value;                                  
-        SetTextInt32(5,2,Progress_Value,0,1);                                        //设置文本框的值     
-    }    
+//    if(screen_id == 5)
+//    {
+//        Progress_Value = value;                                  
+//        SetTextInt32(5,2,Progress_Value,0,1);                                        //设置文本框的值     
+//    }    
 }                                                                                
 
 /*!                                                                              
@@ -608,25 +712,25 @@ void NotifyProgress(uint16 screen_id, uint16 control_id, uint32 value)
 */                                                                              
 void NotifySlider(uint16 screen_id, uint16 control_id, uint32 value)             
 {                                                             
-    uchar back[1] = {0};
-    if(screen_id==7&&control_id==2)                                                  //滑块控制
-    {            
-        if(value<100||value>0)                                                       
-        {                                                                            
-            SetProgressValue(7,1,value);                                             //更新进度条数值
-            SetTextInt32(7,3,value,0,1); 
-            sprintf(back,"%c",(255-value*2));                                        //设置背光亮度 背光值范围 0~255，0最亮，255最暗
-            SetBackLight(back[0]);
-        }
-    }
-    if(screen_id==7&&control_id==5)                                                  //滑块控制
-    {                                                                              
-        if(value<100||value>0)                                                       
-        {                                                                            
-            SetProgressValue(7,4,value);                                             //更新进度条数值
-            SetTextInt32(7,6,value,0,1);                                             
-        }
-    }
+//    uchar back[1] = {0};
+//    if(screen_id==7&&control_id==2)                                                  //滑块控制
+//    {            
+//        if(value<100||value>0)                                                       
+//        {                                                                            
+//            SetProgressValue(7,1,value);                                             //更新进度条数值
+//            SetTextInt32(7,3,value,0,1); 
+//            sprintf(back,"%c",(255-value*2));                                        //设置背光亮度 背光值范围 0~255，0最亮，255最暗
+//            SetBackLight(back[0]);
+//        }
+//    }
+//    if(screen_id==7&&control_id==5)                                                  //滑块控制
+//    {                                                                              
+//        if(value<100||value>0)                                                       
+//        {                                                                            
+//            SetProgressValue(7,4,value);                                             //更新进度条数值
+//            SetTextInt32(7,6,value,0,1);                                             
+//        }
+//    }
 }
 
 /*! 
@@ -663,14 +767,14 @@ void NotifyMenu(uint16 screen_id, uint16 control_id, uint8 item, uint8 state)
 */
 void NotifySelector(uint16 screen_id, uint16 control_id, uint8  item)
 {
-    if(screen_id == 13&&control_id == 1)                                //获取当前选择控件的值
-    {
-        Select_H =  item;
-    } 
-    if(screen_id == 13&&control_id == 2)                                //获取当前选择控件的值
-    {
-        Select_M =  item;
-    } 
+//    if(screen_id == 13&&control_id == 1)                                //获取当前选择控件的值
+//    {
+//        Select_H =  item;
+//    } 
+//    if(screen_id == 13&&control_id == 2)                                //获取当前选择控件的值
+//    {
+//        Select_M =  item;
+//    } 
 
 }
 
@@ -681,10 +785,10 @@ void NotifySelector(uint16 screen_id, uint16 control_id, uint8  item)
 */
 void NotifyTimer(uint16 screen_id, uint16 control_id)
 {
-    if(screen_id==8&&control_id == 7)
-    {
-        SetBuzzer(100);
-    } 
+//    if(screen_id==8&&control_id == 7)
+//    {
+//        SetBuzzer(100);
+//    } 
 }
 
 /*! 

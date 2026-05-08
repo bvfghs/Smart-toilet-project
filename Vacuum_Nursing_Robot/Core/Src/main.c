@@ -29,10 +29,18 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
- extern volatile uint8_t  debug_rx_byte ;
+
+ #define updata_UI_time_ms    20   //多少ms更新屏幕显示
+ 
+ extern volatile uint8_t  debug_rx_byte ;//两个用于电脑串口调试到（usart3）
  extern volatile uint8_t  debug_print_flag ;
  
+ volatile  uint32 timer_tick_count=0;//控制任务执行时间的定时器
+ 
+
+ 
  volatile qsize  size;
+ 
 extern UART_HandleTypeDef huart3;
 /* USER CODE END PTD */
 
@@ -49,7 +57,7 @@ extern UART_HandleTypeDef huart3;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-// �ض��� printf �� USART1
+// 重定向 printf 到 USART1
 int fputc(int ch, FILE *f) {
     HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
@@ -65,7 +73,11 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void HAL_SYSTICK_Callback(void)//systick用于任务定时
+  {
+	timer_tick_count++;
 
+  }
 /* USER CODE END 0 */
 
 /**
@@ -116,21 +128,29 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
 				size = queue_find_cmd(cmd_buffer,CMD_MAX_SIZE);	// get cmd from cmd_buffer
-	if(size>0 && cmd_buffer[1]!=0x07)                                              
+	if(size>0 && cmd_buffer[1]!=0x07)                     //接收到指令 ，及判断是否为开机提示        
 	{                                                                           
-		ProcessMessage((PCTRL_MSG)cmd_buffer, size);                            
+		ProcessMessage((PCTRL_MSG)cmd_buffer, size);         //指令处理                   
 		printf("get data\r\n");
-		//HAL_GPIO_TogglePin(RUN_LED_GPIO_Port, RUN_LED_Pin);	//
+		
 	}   
-	UpdateUI();
+	else if(size>0&&cmd_buffer[1]==0x07)                                         //如果为指令0x07就软重置STM32  
+   {                                                                           
+           __disable_irq();      // 关闭所有可屏蔽中断（PRIMASK）
+           NVIC_SystemReset();   // 立即触发系统复位                                                                                                                                        
+   } 
+				
+	 if(timer_tick_count % updata_UI_time_ms == 0)        // 20毫秒更新一次屏幕
+	 {UpdateUI();}
+	 
+	 
 	//HAL_GPIO_TogglePin(RUN_LED_GPIO_Port, RUN_LED_Pin);
 	
 	
 		   if (debug_print_flag) {
         debug_print_flag = 0;
-        printf("rx: %02X\r\n", debug_rx_byte);  // ��ȫ��������Դ���
+        printf("rx: %02X\r\n", debug_rx_byte);  // 安全输出到电脑串口
     }
 		
 		
@@ -220,3 +240,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+

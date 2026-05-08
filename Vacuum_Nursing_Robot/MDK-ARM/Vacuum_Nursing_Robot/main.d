@@ -32,11 +32,12 @@ vacuum_nursing_robot\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_t
 vacuum_nursing_robot\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 vacuum_nursing_robot\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 vacuum_nursing_robot\main.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\stdio.h
-vacuum_nursing_robot\main.o: ..\HardWare\SCREEN\hmi.h
+vacuum_nursing_robot\main.o: D:\keil 5.24a\ARM\ARMCC\Bin\..\include\string.h
+vacuum_nursing_robot\main.o: ../HardWare/SCREEN/hmi.h
 vacuum_nursing_robot\main.o: ../Core/Inc/main.h
-vacuum_nursing_robot\main.o: ..\HardWare\SCREEN\hmi_driver.h
+vacuum_nursing_robot\main.o: ../HardWare/SCREEN/hmi_driver.h
 vacuum_nursing_robot\main.o: ../Core/Inc/usart.h
-vacuum_nursing_robot\main.o: ..\HardWare\SCREEN\cmd_queue.h
-vacuum_nursing_robot\main.o: ..\HardWare\SCREEN\cmd_process.h
+vacuum_nursing_robot\main.o: ../HardWare/SCREEN/cmd_queue.h
+vacuum_nursing_robot\main.o: ../HardWare/SCREEN/cmd_process.h
 vacuum_nursing_robot\main.o: ../Core/Inc/tim.h
 vacuum_nursing_robot\main.o: ../Core/Inc/gpio.h

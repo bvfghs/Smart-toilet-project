@@ -62,6 +62,8 @@
 
 #define  _BTN_设备控制_BUTTON1                                                     1
 
+#define  _BTN_记录查询_BUTTON11                                                   11
+
 #define  _BTN_系统设置_BUTTON1                                                     1
 
 //全局图片系统设置2.png
