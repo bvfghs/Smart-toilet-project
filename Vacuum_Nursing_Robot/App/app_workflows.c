@@ -719,6 +719,50 @@ const FlowDef_t Flow_CleanAir = {
     .on_finished = Flow_OnFinished_CleanAir
 };
 
+
+/* ---------- 真空箱自清洁工作流程步骤定义 ---------- */
+// 步骤顺序：等待5s → 真空箱自清洁30s
+
+// 步骤 01: 5s 等待
+static void step_vac_01_enter(void) {
+    // TODO: 等待，无设备动作
+}
+static void step_vac_01_exit(void) {
+    // TODO: 无动作
+}
+
+// 步骤 02: 30s 真空箱自清洁
+static void step_vac_02_enter(void) {
+	
+	
+    // TODO: 打开真空箱自清洁相关设备（例如特定阀门、泵等）
+    // 请根据实际硬件填写，如 Actuator_ValveX_On(); Actuator_Pump_On(); 等
+}
+static void step_vac_02_exit(void) {
+	
+	
+    // TODO: 关闭真空箱自清洁设备
+}
+
+// 真空箱自清洁流程步骤数组（可写，以便动态修改时间）
+static FlowStep_t steps_vac_selfclean[] = {
+    {   5, "等待",              step_vac_01_enter, step_vac_01_exit },
+    {  30, "真空箱自清洁",      step_vac_02_enter, step_vac_02_exit },
+    {   0, NULL,                NULL,              NULL }   // 结束标记
+};
+
+// 流程结束回调（复位启动按钮）
+void Flow_OnFinished_VacSelfClean(void) {
+    // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
+    // SetButtonValue(1, 10, 0);   // 画面1，控件10
+}
+
+// 真空箱自清洁流程定义
+const FlowDef_t Flow_VacSelfClean = {
+    .name = "真空箱自清洁",
+    .steps = steps_vac_selfclean,
+    .on_finished = Flow_OnFinished_VacSelfClean
+};
 /* ---------- 通用函数实现 ---------- */
 
 // 通用：设置某个流程的某一步时长
