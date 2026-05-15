@@ -22,24 +22,26 @@
 #include "usart.h"
 #include "gpio.h"
 
+
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_actuator.h"
+#include "bsp_systick.h"
+#include "bsp_console.h"
+#include "svc_scheduler.h"
+#include "app_tasks.h"
+#include "app_flow_manager.h"
+#include "app_workflows.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
- #define updata_UI_time_ms    20   //多少ms更新屏幕显示
+ //#define updata_UI_time_ms    20   //多少ms更新屏幕显示
  
  extern volatile uint8_t  debug_rx_byte ;//两个用于电脑串口调试到（usart3）
  extern volatile uint8_t  debug_print_flag ;
- 
- volatile  uint32 timer_tick_count=0;//控制任务执行时间的定时器
- 
-
- 
- volatile qsize  size;
  
 extern UART_HandleTypeDef huart3;
 /* USER CODE END PTD */
@@ -57,11 +59,7 @@ extern UART_HandleTypeDef huart3;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-// 重定向 printf 到 USART1
-int fputc(int ch, FILE *f) {
-    HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
-    return ch;
-}
+
 
 /* USER CODE END PV */
 
@@ -73,11 +71,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_SYSTICK_Callback(void)//systick用于任务定时
-  {
-	timer_tick_count++;
 
-  }
 /* USER CODE END 0 */
 
 /**
@@ -109,16 +103,25 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM6_Init();
-  MX_USART1_UART_Init();
-  MX_USART3_UART_Init();
+  //MX_TIM6_Init();//暂时无用，可能配合引脚用于pwm输出
+  MX_USART1_UART_Init();//串口屏通讯用
+  MX_USART3_UART_Init();//电脑串口调试用
+	 BSP_Console_Init();//重定向printf用于调试，暂时无用
   /* USER CODE BEGIN 2 */
+	
 	
 	queue_reset();
 	HAL_Delay(300);
 	HAL_UART_Receive_IT(&huart1,&uart_rx_buf, 1);
 	
 	printf("is connect\r\n");
+	
+	FlowManager_Init();//初始化工作流程管理器
+	Sched_Init();//初始化任务调度器
+	Sched_Register(UpdateUI, 200);//注册屏幕更新任务 200ms间隔
+	Sched_Register(HMI_ProcessTask, 0);//注册单片机接受处理串口频信号，每次都进行
+  Sched_Register(FlowManager_Tick, 1000);//注册任务流程进行任务，每1秒更新一次
+
 	
 	HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,0);
   /* USER CODE END 2 */
@@ -127,39 +130,23 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-				size = queue_find_cmd(cmd_buffer,CMD_MAX_SIZE);	// get cmd from cmd_buffer
-	if(size>0 && cmd_buffer[1]!=0x07)                     //接收到指令 ，及判断是否为开机提示        
-	{                                                                           
-		ProcessMessage((PCTRL_MSG)cmd_buffer, size);         //指令处理                   
-		printf("get data\r\n");
+   
+		Sched_Run();//任务调度器用于执行注册的任务
 		
-	}   
-	else if(size>0&&cmd_buffer[1]==0x07)                                         //如果为指令0x07就软重置STM32  
-   {                                                                           
-           __disable_irq();      // 关闭所有可屏蔽中断（PRIMASK）
-           NVIC_SystemReset();   // 立即触发系统复位                                                                                                                                        
-   } 
-				
-	 if(timer_tick_count % updata_UI_time_ms == 0)        // 20毫秒更新一次屏幕
-	 {UpdateUI();}
-	 
-	 
-	//HAL_GPIO_TogglePin(RUN_LED_GPIO_Port, RUN_LED_Pin);
+//	HAL_GPIO_TogglePin(valve_1_GPIO_Port,valve_1_Pin);
 	
-	
-		   if (debug_print_flag) {
-        debug_print_flag = 0;
-        printf("rx: %02X\r\n", debug_rx_byte);  // 安全输出到电脑串口
+		   if (debug_print_flag) 
+		{
+      debug_print_flag = 0;
+      printf("rx: %02X\r\n", debug_rx_byte);  // 安全输出到电脑串口
     }
-		
-		
 		
 		
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
+
 
 /**
   * @brief System Clock Configuration

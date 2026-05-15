@@ -10,8 +10,9 @@
       <TargetName>Vacuum_Nursing_Robot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pArmCC>6070000::V6.7::.\ARMCLANG</pArmCC>
+      <pCCUsed>6070000::V6.7::.\ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F407VETx</Device>
@@ -138,7 +139,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -311,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>7</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -320,12 +321,12 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
             <useXO>0</useXO>
-            <v6Lang>5</v6Lang>
+            <v6Lang>3</v6Lang>
             <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -336,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../HardWare/SCREEN</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../HardWare/SCREEN;..\HardWare;..\App;..\Bsp;..\Middleware;..\SVC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -519,41 +520,129 @@
         </Group>
         <Group>
           <GroupName>HardWare</GroupName>
+        </Group>
+        <Group>
+          <GroupName>App</GroupName>
           <Files>
-            <File>
-              <FileName>cmd_process.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HardWare\SCREEN\cmd_process.h</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_queue.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HardWare\SCREEN\cmd_queue.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HardWare\SCREEN\cmd_queue.h</FilePath>
-            </File>
             <File>
               <FileName>hmi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HardWare\SCREEN\hmi.c</FilePath>
+              <FilePath>..\App\hmi.c</FilePath>
             </File>
             <File>
               <FileName>hmi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\HardWare\SCREEN\hmi.h</FilePath>
+              <FilePath>..\App\hmi.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_tasks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\app_tasks.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_tasks.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\app_tasks.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_flow_manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\app_flow_manager.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_flow_manager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\app_flow_manager.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_workflows.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\app_workflows.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_workflows.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\app_workflows.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bsp</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_actuator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\bsp_actuator.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_actuator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Bsp\bsp_actuator.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\bsp_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Bsp\bsp_systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_console.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\bsp_console.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_console.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Bsp\bsp_console.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middleware</GroupName>
+          <Files>
+            <File>
+              <FileName>cmd_process.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Middleware\cmd_process.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middleware\cmd_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmd_queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Middleware\cmd_queue.h</FilePath>
             </File>
             <File>
               <FileName>hmi_driver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HardWare\SCREEN\hmi_driver.c</FilePath>
+              <FilePath>..\Middleware\hmi_driver.c</FilePath>
             </File>
             <File>
               <FileName>hmi_driver.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\HardWare\SCREEN\hmi_driver.h</FilePath>
+              <FilePath>..\Middleware\hmi_driver.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SVC</GroupName>
+          <Files>
+            <File>
+              <FileName>svc_scheduler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SVC\svc_scheduler.c</FilePath>
+            </File>
+            <File>
+              <FileName>svc_scheduler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\SVC\svc_scheduler.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -567,8 +656,8 @@
   <RTE>
     <apis/>
     <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="4.3.0" condition="CMSIS Core">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.5.0"/>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.0.1" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.0.1"/>
         <targetInfos>
           <targetInfo name="Vacuum_Nursing_Robot"/>
         </targetInfos>
