@@ -79,6 +79,23 @@ unsigned short Convert(unsigned short s) {
 }
 
 
+
+// 处理步骤时长设置（封装了字符串转数字和写回）
+static void HandleStepDuration(uint16_t screen_id, uint16_t control_id, const char* str, 
+                               const FlowDef_t* flow, uint8_t step_index) {
+    uint32_t seconds = 1;   // 默认1秒
+    // 尝试转换，失败或为0则保持1秒
+    sscanf(str, "%u", &seconds);
+    if (seconds == 0) seconds = 1;
+    Flow_SetStepDuration(flow, step_index, seconds);
+    // 写回屏幕显示正确值
+    char buf[12];
+    sprintf(buf, "%u", seconds);
+    SetTextValue(screen_id, control_id, (uint8_t*)buf);
+}
+
+
+
 /*! 
 *  \brief  消息处理流程
 *  \param msg 待处理消息
@@ -442,6 +459,30 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 */
 void NotifyText(uint16 screen_id, uint16 control_id, uint8 *str)
 {
+	
+	// 根据画面ID和控件ID确定流程和步骤索引
+    if (screen_id == 4 && control_id >= 7 && control_id <= 28) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_Defecate, control_id - 7);
+    }
+    else if (screen_id == 5 && control_id >= 7 && control_id <= 20) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_Urinate, control_id - 7);
+    }
+    else if (screen_id == 6 && control_id >= 7 && control_id <= 20) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_Clean, control_id - 7);
+    }
+    else if (screen_id == 7 && control_id >= 7 && control_id <= 9) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_Dry, control_id - 7);
+    }
+    else if (screen_id == 8 && control_id >= 7 && control_id <= 8) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_CleanAir, control_id - 7);
+    }
+    else if (screen_id == 9 && control_id >= 7 && control_id <= 8) {
+        HandleStepDuration(screen_id, control_id, (const char*)str, &Flow_VacSelfClean, control_id - 7);
+    }
+	
+	
+	
+	
 //    if(screen_id==4)                                                                 //画面ID2：文本设置和显示
 //    {                                                                            
 //        int32 value=0;                                                            
