@@ -19,6 +19,6 @@ extern void  SendChar(uint8_t t);
 extern void UpdateUI(void);                                                                 //更新UI数据
 extern uint8  cmd_buffer[];  
 extern uint8_t uart_rx_buf;
-
-
+extern uint16_t g_current_screen_id;   //让其他文件可以读取当前的屏幕ID
+void SetScreen1Idle(void);//用于将显示当前工作状态的控件恢复为空闲状态
 #endif

@@ -28,306 +28,316 @@ Project File Date:  05/14/2026
 *** Using Compiler 'V6.7', folder: 'D:\keil 5.24a\ARM\ARMCLANG\Bin'
 Rebuild target 'Vacuum_Nursing_Robot'
 assembling startup_stm32f407xx.s...
-compiling usart.c...
-compiling stm32f4xx_hal_flash.c...
-compiling stm32f4xx_hal_rcc.c...
-compiling tim.c...
-compiling main.c...
 compiling gpio.c...
+compiling main.c...
+compiling tim.c...
 compiling stm32f4xx_it.c...
-compiling stm32f4xx_hal_msp.c...
+compiling stm32f4xx_hal_flash.c...
 compiling stm32f4xx_hal_rcc_ex.c...
-compiling stm32f4xx_hal_tim.c...
-compiling stm32f4xx_hal_tim_ex.c...
+compiling usart.c...
 compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_tim_ex.c...
 compiling stm32f4xx_hal_flash_ramfunc.c...
-compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_rcc.c...
+compiling stm32f4xx_hal_msp.c...
+compiling stm32f4xx_hal_tim.c...
 compiling stm32f4xx_hal_cortex.c...
-compiling stm32f4xx_hal.c...
-compiling stm32f4xx_hal_pwr.c...
-compiling stm32f4xx_hal_exti.c...
-compiling system_stm32f4xx.c...
-compiling stm32f4xx_hal_gpio.c...
 compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_pwr_ex.c...
 compiling stm32f4xx_hal_dma_ex.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal.c...
+../App/hmi.c(644): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C8><D5>");
+                           ^~~~~~~~~~~~~~~~~~~~~~~~
+../App/hmi.c(644): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C8><D5>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(648): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><U+04BB>");
+                           ^~~~~~~~~~~~~~~~
+../App/hmi.c(648): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><U+04BB>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(652): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><U+06B6><FE>");
+                           ^~~~~~~~~~~~        ~~~~
+../App/hmi.c(652): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><U+06B6><FE>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(656): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C8><FD>");
+                           ^~~~~~~~~~~~~~~~~~~~~~~~
+../App/hmi.c(656): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C8><FD>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(660): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><CB><C4>"); 
+                           ^~~~~~~~~~~~~~~~~~~~~~~~
+../App/hmi.c(660): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><CB><C4>"); 
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(664): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><CE><E5>");
+                           ^~~~~~~~~~~~~~~~~~~~~~~~
+../App/hmi.c(664): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><CE><E5>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(668): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C1><F9>");
+                           ^~~~~~~~~~~~~~~~~~~~~~~~
+../App/hmi.c(668): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
+         SetTextValue(8,7,"<D0><C7><C6><DA><C1><F9>");
+                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
+void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
+                                                            ^
+../App/hmi.c(702): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+    SetTextValue(1, 13, (uint8_t*)"<BF><D5><CF><D0>");
+                                   ^~~~~~~~~~~~~~~~
+15 warnings generated.
+compiling hmi.c...
+compiling stm32f4xx_hal_exti.c...
+compiling stm32f4xx_hal_uart.c...
 ../App/app_tasks.c(40): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
         sprintf(buf, "%lu", sec);
                       ~~~   ^~~
                       %u
-1 warning generated.
+../App/app_tasks.c(91): warning: format specifies type 'unsigned long' but the argument has type 'uint32_t' (aka 'unsigned int') [-Wformat]
+        snprintf(time_buf, sizeof(time_buf), "%lu", remain);
+                                              ~~~   ^~~~~~
+                                              %u
+2 warnings generated.
 compiling app_tasks.c...
-../App/hmi.c(661): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C8><D5>");
-                           ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/hmi.c(661): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C8><D5>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(665): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><U+04BB>");
-                           ^~~~~~~~~~~~~~~~
-../App/hmi.c(665): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><U+04BB>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(669): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><U+06B6><FE>");
-                           ^~~~~~~~~~~~        ~~~~
-../App/hmi.c(669): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><U+06B6><FE>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(673): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C8><FD>");
-                           ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/hmi.c(673): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C8><FD>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(677): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><CB><C4>"); 
-                           ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/hmi.c(677): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><CB><C4>"); 
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(681): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><CE><E5>");
-                           ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/hmi.c(681): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><CE><E5>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-../App/hmi.c(685): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C1><F9>");
-                           ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/hmi.c(685): warning: passing 'char [7]' to parameter of type 'unsigned char *' converts between pointers to integer types with different sign [-Wpointer-sign]
-         SetTextValue(8,7,"<D0><C7><C6><DA><C1><F9>");
-                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
-../Middleware/hmi_driver.h(396): note: passing argument to parameter 'str' here
-void SetTextValue(uint16 screen_id,uint16 control_id,uchar *str);
-                                                            ^
-14 warnings generated.
-compiling hmi.c...
-compiling stm32f4xx_hal_uart.c...
-compiling svc_scheduler.c...
-compiling bsp_console.c...
 compiling bsp_actuator.c...
+compiling bsp_systick.c...
+compiling cmd_queue.c...
+compiling bsp_console.c...
 ../App/app_flow_manager.c(99): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     if (s_current_step == NULL) return "<BF><D5><CF><D0>";
                                         ^~~~~~~~~~~~~~~~
-1 warning generated.
+../App/app_flow_manager.c(128): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+    if (s_current_flow == NULL) return "<BF><D5><CF><D0>";
+                                        ^~~~~~~~~~~~~~~~
+2 warnings generated.
 compiling app_flow_manager.c...
-compiling bsp_systick.c...
-compiling cmd_queue.c...
-compiling hmi_driver.c...
-../App/app_workflows.c(220): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(221): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",       step_def_01_enter, step_def_01_exit  },
             ^~~~        ~~~~
-../App/app_workflows.c(221): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(222): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<U+01FF><B3><E9><CE><DB>",     step_def_02_enter, step_def_02_exit  },
                     ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(222): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(223): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",       step_def_03_enter, step_def_03_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(223): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(224): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<CF><C2><C5><E7><B3><E9><CE><DB>",   step_def_04_enter, step_def_04_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(224): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(225): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",       step_def_05_enter, step_def_05_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(225): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(226): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<CF><C2><C5><E7><B3><E9><CE><DB>",   step_def_06_enter, step_def_06_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(226): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(227): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",       step_def_07_enter, step_def_07_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(227): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(228): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",       step_def_08_enter, step_def_08_exit  },
             ^~~~        ~~~~
-../App/app_workflows.c(228): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(229): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",       step_def_09_enter, step_def_09_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(229): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(230): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",       step_def_10_enter, step_def_10_exit  },
             ^~~~        ~~~~
-../App/app_workflows.c(230): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(231): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",       step_def_11_enter, step_def_11_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(231): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(232): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<D6><D0><C5><E7><B3><E9><CE><DB>",   step_def_12_enter, step_def_12_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(232): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(233): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",       step_def_13_enter, step_def_13_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(233): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(234): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<D6><D0><C5><E7><B3><E9><CE><DB>",   step_def_14_enter, step_def_14_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(234): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(235): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",       step_def_15_enter, step_def_15_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(235): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(236): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<CF><C2><C5><E7><B3><E9><CE><DB>",   step_def_16_enter, step_def_16_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(236): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(237): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",       step_def_17_enter, step_def_17_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(237): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(238): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<CF><C2><C5><E7><B3><E9><CE><DB>",   step_def_18_enter, step_def_18_exit  },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(238): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(239): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",       step_def_19_enter, step_def_19_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(239): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(240): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  20, "<B5><U+0234><FD>",       step_def_20_enter, step_def_20_exit  },
             ^~~~        ~~~~
-../App/app_workflows.c(240): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(241): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     { 600, "<U+016F><B7><E7>",       step_def_21_enter, step_def_21_exit  },
                     ^~~~~~~~
-../App/app_workflows.c(241): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(242): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",       step_def_22_enter, step_def_22_exit  },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(250): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(252): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<B4><F3><B1><E3><B3><E5><U+03F4>",
              ^~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(413): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(415): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",         step_uri_01_enter, step_uri_01_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(414): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(416): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<U+01FF><B3><E9><CE><DB>",       step_uri_02_enter, step_uri_02_exit },
                     ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(415): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(417): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",         step_uri_03_enter, step_uri_03_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(416): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(418): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   8, "<D6><D0><C5><E7><B3><E9><CE><DB>",     step_uri_04_enter, step_uri_04_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(417): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(419): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",         step_uri_05_enter, step_uri_05_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(418): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(420): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<D6><D0><C5><E7><B3><E9><CE><DB>",     step_uri_06_enter, step_uri_06_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(419): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(421): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",         step_uri_07_enter, step_uri_07_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(420): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(422): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<CF><C2><C5><E7><B3><E9><CE><DB>",     step_uri_08_enter, step_uri_08_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(421): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(423): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",         step_uri_09_enter, step_uri_09_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(422): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(424): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<CF><C2><C5><E7><B3><E9><CE><DB>",     step_uri_10_enter, step_uri_10_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(423): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(425): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",         step_uri_11_enter, step_uri_11_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(424): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(426): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  20, "<B5><U+0234><FD>",         step_uri_12_enter, step_uri_12_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(425): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(427): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     { 600, "<U+016F><B7><E7>",         step_uri_13_enter, step_uri_13_exit },
                     ^~~~~~~~
-../App/app_workflows.c(426): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(428): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",         step_uri_14_enter, step_uri_14_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(438): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(441): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<U+0421><B1><E3><B3><E5><U+03F4>",
                      ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(600): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(603): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",         step_cln_01_enter, step_cln_01_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(601): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(604): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<U+01FF><B3><E9><CE><DB>",       step_cln_02_enter, step_cln_02_exit },
                     ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(602): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(605): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",         step_cln_03_enter, step_cln_03_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(603): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(606): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<D6><D0><C5><E7><B3><E9><CE><DB>",     step_cln_04_enter, step_cln_04_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(604): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(607): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",         step_cln_05_enter, step_cln_05_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(605): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(608): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<D6><D0><C5><E7><B3><E9><CE><DB>",     step_cln_06_enter, step_cln_06_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(606): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(609): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  15, "<B3><E9><CE><DB>",         step_cln_07_enter, step_cln_07_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(607): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(610): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<CF><C2><C5><E7><B3><E9><CE><DB>",     step_cln_08_enter, step_cln_08_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(608): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(611): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  10, "<B3><E9><CE><DB>",         step_cln_09_enter, step_cln_09_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(609): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(612): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<CF><C2><C5><E7><B3><E9><CE><DB>",     step_cln_10_enter, step_cln_10_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(610): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(613): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",         step_cln_11_enter, step_cln_11_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(611): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(614): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  20, "<B5><U+0234><FD>",         step_cln_12_enter, step_cln_12_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(612): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(615): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     { 600, "<U+016F><B7><E7>",         step_cln_13_enter, step_cln_13_exit },
                     ^~~~~~~~
-../App/app_workflows.c(613): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(616): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",         step_cln_14_enter, step_cln_14_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(625): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(629): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<C7><E5><U+03F4>",
              ^~~~~~~~
-../App/app_workflows.c(667): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(671): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",         step_dry_01_enter, step_dry_01_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(668): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(672): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     { 600, "<U+016F><B7><E7>",         step_dry_02_enter, step_dry_02_exit },
                     ^~~~~~~~
-../App/app_workflows.c(669): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(673): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B3><E9><CE><DB>",         step_dry_03_enter, step_dry_03_exit },
             ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(681): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(686): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<B8><C9><D4><EF>",
              ^~~~~~~~~~~~~~~~
-../App/app_workflows.c(712): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(717): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",          step_air_01_enter, step_air_01_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(713): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(718): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  60, "<C7><E5><BD><E0><BF><D5><C6><F8>",      step_air_02_enter, step_air_02_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(725): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(731): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<C7><E5><BD><E0><BF><D5><C6><F8>",
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(765): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(771): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {   5, "<B5><U+0234><FD>",              step_vac_01_enter, step_vac_01_exit },
             ^~~~        ~~~~
-../App/app_workflows.c(766): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(772): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     {  30, "<D5><E6><BF><D5><CF><E4><D7><D4><C7><E5><BD><E0>",      step_vac_02_enter, step_vac_02_exit },
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../App/app_workflows.c(778): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
+../App/app_workflows.c(785): warning: illegal character encoding in string literal [-Winvalid-source-encoding]
     .name = "<D5><E6><BF><D5><CF><E4><D7><D4><C7><E5><BD><E0>",
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 63 warnings generated.
 compiling app_workflows.c...
+compiling svc_scheduler.c...
+compiling hmi_driver.c...
 linking...
-Program Size: Code=12748 RO-data=672 RW-data=1032 ZI-data=1968  
+Program Size: Code=13060 RO-data=676 RW-data=1032 ZI-data=1968  
 FromELF: creating hex file...
-"Vacuum_Nursing_Robot\Vacuum_Nursing_Robot.axf" - 0 Error(s), 79 Warning(s).
+"Vacuum_Nursing_Robot\Vacuum_Nursing_Robot.axf" - 0 Error(s), 82 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -350,7 +360,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:09
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>

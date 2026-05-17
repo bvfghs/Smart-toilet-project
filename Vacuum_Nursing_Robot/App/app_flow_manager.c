@@ -122,3 +122,9 @@ void FlowManager_Tick(void) {
         }
     }
 }
+
+//读取当前工作流程的名称
+const char* FlowManager_GetCurrentFlowName(void) {
+    if (s_current_flow == NULL) return "空闲";
+    return s_current_flow->name;
+}

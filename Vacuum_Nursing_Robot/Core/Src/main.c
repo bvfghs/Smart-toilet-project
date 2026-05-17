@@ -123,7 +123,7 @@ int main(void)
 	Sched_Register(HMI_ProcessTask, 0);//注册单片机接受处理串口频信号，每次都进行
   Sched_Register(FlowManager_Tick, 1000);//注册任务流程进行任务，每1秒更新一次
 
-   HAL_Delay(3000);//等待屏幕完全启动
+  HAL_Delay(3000);//等待屏幕完全启动（注意，如果已经连接屏幕最好先按一次单片机复位键）
 	RefreshAllScreensData();//更新所有设置界面的参数
 	
 	HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,0);

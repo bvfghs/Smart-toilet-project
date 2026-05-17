@@ -33,7 +33,7 @@ uint8_t uart_rx_buf;
 
  volatile uint8_t  debug_rx_byte=0 ;
  volatile uint8_t  debug_print_flag=0 ;
-
+uint16_t g_current_screen_id = 0;  // 放在文件开头或合适位置用于记录当前页面，可以传递给其他文件
 
 
 uint8  cmd_buffer[CMD_MAX_SIZE];                                                     //指令缓存
@@ -61,13 +61,13 @@ static int sec = 1;                                                             
 
 
 
-void UpdateUI(void);  //更新UI数据
+//void UpdateUI(void);  //更新UI数据
 
 
-void UpdateUI(void)//此处为单片机向串口屏发送信息的任务，每20ms到100ms使用一次
-{
+//void UpdateUI(void)//此处为单片机向串口屏发送信息的任务，每20ms到100ms使用一次
+//{
 
-}
+//}
 
 
 unsigned short Convert(unsigned short s) {
@@ -196,60 +196,43 @@ void NOTIFYHandShake(void)
 */
 void NotifyScreen(uint16 screen_id)
 {
+	 g_current_screen_id = screen_id;  // 记录当前画面ID
+
+	if(screen_id==1)
+	{
+        if (!FlowManager_IsActive()) {  // 当无任务执行，并且进入ID1页面时，将状态显示为空闲
+        SetScreen1Idle();
+        }
+	}
+    
 	
-    if (screen_id == 4) {
-        RefreshFlowStepTimes(4, &Flow_Defecate, 7, 22);//进入大便设置时间时，更新步骤时间到屏幕
-//        RefreshFlowStepTimes(10, &Flow_Urinate, 122, 14);
-//        RefreshFlowStepTimes(10, &Flow_Clean, 136, 14);
-//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
-//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
-//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
-    }
-   
-		if (screen_id == 5) {
-//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
-          RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  //进入小便设置时间时，更新步骤时间到屏幕
-//        RefreshFlowStepTimes(10, &Flow_Clean, 136, 14);
-//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
-//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
-//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
-    }
 		
-		if (screen_id == 6) {
-//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
-//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
-          RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);     //进入清洗设置时间时，更新步骤时间到屏幕
-//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
-//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
-//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
-    }
-		
-				if (screen_id == 7) {
-//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
-//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
-//          RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
-          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     //进入干燥设置时间时，更新步骤时间到屏幕
-//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
-//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
-    }
-		
-						if (screen_id == 8) {
-//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
-//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
-//        RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
-//          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     
-        RefreshFlowStepTimes(8, &Flow_CleanAir, 7, 2);     //进入空气清洁设置时间时，更新步骤时间到屏幕
-//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
-    }
-						
-						if (screen_id == 9) {
-//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
-//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
-//        RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
-//          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     
-//        RefreshFlowStepTimes(9, &Flow_CleanAir, 7, 2);     
-        RefreshFlowStepTimes(9, &Flow_VacSelfClean, 7, 2);//进入管道清洁设置时间时，更新步骤时间到屏幕
-    }
+	
+//用于每次进入工作流程设置时间时更新步骤时间到屏幕	，因为已经在设置时间和屏幕启动时都做了更新，此处看情况加入
+//    if (screen_id == 4) {
+//        RefreshFlowStepTimes(4, &Flow_Defecate, 7, 22);//进入大便设置时间时，更新步骤时间到屏幕
+//    }
+//   
+//		if (screen_id == 5) {
+//          RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  //进入小便设置时间时，更新步骤时间到屏幕
+//    }
+//		
+//		if (screen_id == 6) {
+//          RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);     //进入清洗设置时间时，更新步骤时间到屏幕
+//    }
+//		
+//				if (screen_id == 7) {
+//          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     //进入干燥设置时间时，更新步骤时间到屏幕
+//    }
+//		
+//						if (screen_id == 8) {
+
+//        RefreshFlowStepTimes(8, &Flow_CleanAir, 7, 2);     //进入空气清洁设置时间时，更新步骤时间到屏幕
+//    }
+//						
+//						if (screen_id == 9) {
+//        RefreshFlowStepTimes(9, &Flow_VacSelfClean, 7, 2);//进入管道清洁设置时间时，更新步骤时间到屏幕
+//    }
 		
 }
 	
@@ -714,6 +697,10 @@ void  SendChar(uint8_t t)
 	
 }
 
-
-
+//用于将显示当前工作状态的控件恢复为空闲状态
+void SetScreen1Idle(void) {
+    SetTextValue(1, 13, (uint8_t*)"空闲");
+    SetTextValue(1, 14, (uint8_t*)"");   // 空字符串，清空步骤描述
+    SetTextValue(1, 15, (uint8_t*)"");   // 空字符串，清空剩余时间
+}
 

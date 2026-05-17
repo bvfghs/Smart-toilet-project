@@ -36,4 +36,4 @@ vacuum_nursing_robot/app_tasks.o: ../App/app_tasks.c \
   ../Middleware\cmd_queue.h ../Middleware\cmd_process.h \
   ../App/app_flow_manager.h \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  ../App/app_workflows.h
+  ../App/app_workflows.h ../App/app_tasks.h

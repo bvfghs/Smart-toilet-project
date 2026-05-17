@@ -65,4 +65,30 @@ void RefreshFlowStepTimes(uint16_t screen_id, const FlowDef_t* flow, uint16_t st
 
 
 
-															 
+#include "app_tasks.h"
+#include "app_flow_manager.h"
+#include "hmi_driver.h"
+#include <stdio.h>
+
+// 其他已有代码...
+
+void UpdateUI(void)
+{
+// 仅在画面1且流程活跃时更新
+    if (g_current_screen_id == 1 && FlowManager_IsActive()) {
+        // 更新流程名称、步骤描述、剩余时间（使用之前的代码）
+        const char* flow_name = FlowManager_GetCurrentFlowName();
+        SetTextValue(1, 13, (uint8_t*)flow_name);
+        
+        char desc_buf[32];
+        uint8_t step_idx = FlowManager_GetCurrentStepIndex();
+        const char* step_desc = FlowManager_GetStepDesc();
+        snprintf(desc_buf, sizeof(desc_buf), "%d.%s", step_idx + 1, step_desc);
+        SetTextValue(1, 14, (uint8_t*)desc_buf);
+        
+        char time_buf[12];
+        uint32_t remain = FlowManager_GetTimeLeft();
+        snprintf(time_buf, sizeof(time_buf), "%lu", remain);
+        SetTextValue(1, 15, (uint8_t*)time_buf);
+       }
+}

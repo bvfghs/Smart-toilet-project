@@ -65,6 +65,12 @@
 
 #define  _BTN_设备控制_BUTTON1                                                     1
 
+#define  _TXT_DIS__设备控制_TEXT_DISPLAY1                                         13
+
+#define  _TXT_DIS__设备控制_TEXT_DISPLAY2                                         14
+
+#define  _TXT_DIS__设备控制_TEXT_DISPLAY3                                         15
+
 #define  _BTN_记录查询_BUTTON11                                                   11
 
 #define  _BTN_记录查询_BUTTON3                                                     6

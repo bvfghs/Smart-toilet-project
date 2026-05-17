@@ -1,6 +1,7 @@
 #include "app_workflows.h"
 #include "bsp_actuator.h"
 #include "hmi_driver.h"      // 提供 SetButtonValue 等串口屏指令
+#include "hmi.h" 
 
 
 /* ---------- 大便冲洗流程步骤定义（严格按顺序独立编写，无复用） ---------- */
@@ -244,6 +245,7 @@ static   FlowStep_t steps_defecate[] = {
 
 void Flow_OnFinished_Defecate(void) {
     SetButtonValue(1, 5, 0);   // 流程结束复位HMI按钮（ID与值请按实际屏幕协议修改）
+	SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 const FlowDef_t Flow_Defecate = {
@@ -431,6 +433,7 @@ static FlowStep_t steps_urinate[] = {
 void Flow_OnFinished_Urinate(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
      SetButtonValue(1, 6, 0);   // 画面1，控件6
+		SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 // 小便流程定义
@@ -618,6 +621,7 @@ static FlowStep_t steps_clean[] = {
 void Flow_OnFinished_Clean(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
      SetButtonValue(1, 8, 0);   // 画面1，控件8
+		SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 // 清洗流程定义
@@ -674,6 +678,7 @@ static FlowStep_t steps_dry[] = {
 void Flow_OnFinished_Dry(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
      SetButtonValue(1, 7, 0);   // 画面1，控件7
+		SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 // 干燥流程定义
@@ -718,6 +723,7 @@ static FlowStep_t steps_clean_air[] = {
 void Flow_OnFinished_CleanAir(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
      SetButtonValue(1, 9, 0);   // 画面1，控件9
+		SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 // 清洁空气流程定义
@@ -771,6 +777,7 @@ static FlowStep_t steps_vac_selfclean[] = {
 void Flow_OnFinished_VacSelfClean(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
      SetButtonValue(1, 10, 0);   // 画面1，控件10
+		SetScreen1Idle();  //用于工作流程结束时将显示当前工作状态的控件恢复为空闲状态
 }
 
 // 真空箱自清洁流程定义

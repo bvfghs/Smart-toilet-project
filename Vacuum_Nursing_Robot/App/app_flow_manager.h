@@ -28,5 +28,6 @@ uint8_t FlowManager_GetCurrentStepIndex(void);      // 当前步骤序号（0-based, 用
 uint32_t FlowManager_GetTimeLeft(void);              // 当前步骤剩余秒数
 const char* FlowManager_GetStepDesc(void);           // 当前步骤描述
 void FlowManager_Tick(void);                         // 每秒调用（由调度器驱动）
+const char* FlowManager_GetCurrentFlowName(void);   // 获取当前运行流程的名称
 
 #endif
