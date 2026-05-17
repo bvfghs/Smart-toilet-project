@@ -33,6 +33,7 @@
 #include "app_tasks.h"
 #include "app_flow_manager.h"
 #include "app_workflows.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -111,7 +112,7 @@ int main(void)
 	
 	
 	queue_reset();
-	HAL_Delay(300);
+	HAL_Delay(300);    //用于确保硬件和外设已经完全准备好。
 	HAL_UART_Receive_IT(&huart1,&uart_rx_buf, 1);
 	
 	printf("is connect\r\n");
@@ -122,6 +123,8 @@ int main(void)
 	Sched_Register(HMI_ProcessTask, 0);//注册单片机接受处理串口频信号，每次都进行
   Sched_Register(FlowManager_Tick, 1000);//注册任务流程进行任务，每1秒更新一次
 
+   HAL_Delay(3000);//等待屏幕完全启动
+	RefreshAllScreensData();//更新所有设置界面的参数
 	
 	HAL_GPIO_WritePin(valve_1_GPIO_Port,valve_1_Pin,0);
   /* USER CODE END 2 */

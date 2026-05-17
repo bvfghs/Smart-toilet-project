@@ -33,8 +33,8 @@ vacuum_nursing_robot/main.o: ../Core/Src/main.c ../Core/Inc\main.h \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\string.h ../App\hmi.h \
   ../Middleware\hmi_driver.h ../Core/Inc\usart.h ../Core/Inc/main.h \
   ../Middleware\cmd_queue.h ../Middleware\cmd_process.h \
-  ../Core/Inc\tim.h ../Core/Inc\gpio.h ../Bsp\bsp_actuator.h \
-  ../Bsp\bsp_systick.h ../Bsp\bsp_console.h ../SVC\svc_scheduler.h \
-  ../App\app_tasks.h ../App\app_flow_manager.h \
+  ../App/app_flow_manager.h \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  ../App\app_workflows.h
+  ../App/app_workflows.h ../Core/Inc\tim.h ../Core/Inc\gpio.h \
+  ../Bsp\bsp_actuator.h ../Bsp\bsp_systick.h ../Bsp\bsp_console.h \
+  ../SVC\svc_scheduler.h ../App\app_tasks.h

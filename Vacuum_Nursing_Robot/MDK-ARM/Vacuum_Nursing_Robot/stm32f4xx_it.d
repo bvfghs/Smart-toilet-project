@@ -33,4 +33,6 @@ vacuum_nursing_robot/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\string.h ../App\hmi.h \
   ../Middleware\hmi_driver.h ../Core/Inc\usart.h ../Core/Inc/main.h \
   ../Middleware\cmd_queue.h ../Middleware\cmd_process.h \
-  ../Core/Inc\stm32f4xx_it.h
+  ../App/app_flow_manager.h \
+  D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  ../App/app_workflows.h ../Core/Inc\stm32f4xx_it.h

@@ -782,25 +782,36 @@ const FlowDef_t Flow_VacSelfClean = {
 /* ---------- 通用函数实现 ---------- */
 
 // 通用：设置某个流程的某一步时长
+// 通用：设置某个流程的某一步时长
+
 bool Flow_SetStepDuration(const FlowDef_t* flow, uint8_t step_idx, uint32_t seconds) {
     FlowStep_t* steps = NULL;
     uint8_t step_cnt = 0;
 
     if (flow == &Flow_Defecate) {
         steps = steps_defecate;
-        step_cnt = 22;   // 有效步骤数（目前只写了大便流程，其他步骤需要修改）
+        step_cnt = 22;
     } else if (flow == &Flow_Urinate) {
         steps = steps_urinate;
-        step_cnt = 2;
+        step_cnt = 14;      // 修改为14
     } else if (flow == &Flow_Clean) {
         steps = steps_clean;
-        step_cnt = 1;
+        step_cnt = 14;      // 修改为14
+    } else if (flow == &Flow_Dry) {
+        steps = steps_dry;
+        step_cnt = 3;
+    } else if (flow == &Flow_CleanAir) {
+        steps = steps_clean_air;
+        step_cnt = 2;
+    } else if (flow == &Flow_VacSelfClean) {
+        steps = steps_vac_selfclean;
+        step_cnt = 2;
     } else {
-        return false;   // 未知流程
+        return false;
     }
 
     if (step_idx >= step_cnt) return false;
-    if (seconds == 0) seconds = 1;   // 避免时长为0
+    if (seconds == 0) seconds = 1;
     steps[step_idx].duration_sec = seconds;
     return true;
 }
@@ -815,10 +826,19 @@ uint32_t Flow_GetStepDuration(const FlowDef_t* flow, uint8_t step_idx) {
         step_cnt = 22;
     } else if (flow == &Flow_Urinate) {
         steps = steps_urinate;
-        step_cnt = 2;
+        step_cnt = 14;
     } else if (flow == &Flow_Clean) {
         steps = steps_clean;
-        step_cnt = 1;
+        step_cnt = 14;
+    } else if (flow == &Flow_Dry) {
+        steps = steps_dry;
+        step_cnt = 3;
+    } else if (flow == &Flow_CleanAir) {
+        steps = steps_clean_air;
+        step_cnt = 2;
+    } else if (flow == &Flow_VacSelfClean) {
+        steps = steps_vac_selfclean;
+        step_cnt = 2;
     } else {
         return 0;
     }

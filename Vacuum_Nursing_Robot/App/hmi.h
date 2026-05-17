@@ -12,6 +12,9 @@
 #include "hmi_driver.h"
 #include "cmd_queue.h"
 #include "cmd_process.h"
+#include "app_flow_manager.h"
+#include "app_workflows.h"
+
 extern void  SendChar(uint8_t t);
 extern void UpdateUI(void);                                                                 //更新UI数据
 extern uint8  cmd_buffer[];  

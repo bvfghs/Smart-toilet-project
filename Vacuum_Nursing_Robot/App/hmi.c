@@ -6,6 +6,8 @@
 ** 修改时间:   2018-05-18
 ** 文件说明:   用户MCU串口驱动函数库
 ** 技术支持：  Tel: 020-82186683  Email: hmi@gz-dc.com Web:www.gz-dc.com
+
+该文件用于所有串口频的具体曹操作
 --------------------------------------------------------------------------------------*/
 //#include "hmi_driver.h"
 //#include "hmi_user_uart.h"
@@ -21,9 +23,9 @@
 #include "cmd_queue.h"
 #include "cmd_process.h"
 #include "bsp_actuator.h"
-#include "app_flow_manager.h"
-#include "app_workflows.h"
-#include <stdio.h>
+#include "app_tasks.h"
+
+#include <stdio.h>   // 用于 sprintf
 #include <stdlib.h>
 
 uint8_t uart_rx_buf;
@@ -50,6 +52,14 @@ static int sec = 1;                                                             
 //static uint8 Last_H ;                                                                //上一个选择小时
 //static uint8 Last_M;                                                                 //上一个选择分钟 
 //static int32 Progress_Value = 0;                                                     //进度条的值 
+
+
+
+
+//刷新全部流程的步骤时间到串口屏的文本控件
+
+
+
 
 void UpdateUI(void);  //更新UI数据
 
@@ -169,6 +179,68 @@ void NOTIFYHandShake(void)
 */
 void NotifyScreen(uint16 screen_id)
 {
+	
+    if (screen_id == 4) {
+        RefreshFlowStepTimes(4, &Flow_Defecate, 7, 22);//进入大便设置时间时，更新步骤时间到屏幕
+//        RefreshFlowStepTimes(10, &Flow_Urinate, 122, 14);
+//        RefreshFlowStepTimes(10, &Flow_Clean, 136, 14);
+//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
+//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
+//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
+    }
+   
+		if (screen_id == 5) {
+//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
+          RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  //进入小便设置时间时，更新步骤时间到屏幕
+//        RefreshFlowStepTimes(10, &Flow_Clean, 136, 14);
+//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
+//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
+//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
+    }
+		
+		if (screen_id == 6) {
+//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
+//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
+          RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);     //进入清洗设置时间时，更新步骤时间到屏幕
+//        RefreshFlowStepTimes(10, &Flow_Dry, 150, 3);
+//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
+//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
+    }
+		
+				if (screen_id == 7) {
+//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
+//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
+//          RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
+          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     //进入干燥设置时间时，更新步骤时间到屏幕
+//        RefreshFlowStepTimes(10, &Flow_CleanAir, 153, 2);
+//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
+    }
+		
+						if (screen_id == 8) {
+//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
+//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
+//        RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
+//          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     
+        RefreshFlowStepTimes(8, &Flow_CleanAir, 7, 2);     //进入空气清洁设置时间时，更新步骤时间到屏幕
+//        RefreshFlowStepTimes(10, &Flow_VacSelfClean, 155, 2);
+    }
+						
+						if (screen_id == 9) {
+//        RefreshFlowStepTimes(5, &Flow_Defecate, 7, 22); 
+//        RefreshFlowStepTimes(5, &Flow_Urinate, 7, 14);  
+//        RefreshFlowStepTimes(6, &Flow_Clean, 7, 14);    
+//          RefreshFlowStepTimes(7, &Flow_Dry, 7, 3);     
+//        RefreshFlowStepTimes(9, &Flow_CleanAir, 7, 2);     
+        RefreshFlowStepTimes(9, &Flow_VacSelfClean, 7, 2);//进入管道清洁设置时间时，更新步骤时间到屏幕
+    }
+		
+}
+	
+	
+	
+	
+	
+	
 //    //TODO: 添加用户代码
 //    current_screen_id = screen_id;                                                   //在工程配置中开启画面切换通知，记录当前画面ID
 
@@ -221,7 +293,7 @@ void NotifyScreen(uint16 screen_id)
 //         SetButtonValue(17,3,1);
 //         PlayMusic(buffer);                                                           //播放音乐
 //    }
-}
+
 
 /*! 
 *  \brief  触摸坐标事件响应
@@ -600,3 +672,7 @@ void  SendChar(uint8_t t)
 	while(__HAL_UART_GET_FLAG(&huart1,UART_FLAG_TC)!=SET); // is Tx Complete
 	
 }
+
+
+
+

@@ -33,6 +33,7 @@ vacuum_nursing_robot/hmi.o: ../App/hmi.c ../Core/Inc\main.h \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\string.h ../App\hmi.h \
   ../Middleware\hmi_driver.h ../Core/Inc\usart.h ../Core/Inc/main.h \
   ../Middleware\cmd_queue.h ../Middleware\cmd_process.h \
-  ../Bsp\bsp_actuator.h ../App/app_flow_manager.h \
+  ../App/app_flow_manager.h \
   D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  ../App/app_workflows.h
+  ../App/app_workflows.h ../Bsp\bsp_actuator.h ../App/app_tasks.h \
+  D:\keil\ 5.24a\ARM\ARMCLANG\Bin\..\include\stdlib.h
