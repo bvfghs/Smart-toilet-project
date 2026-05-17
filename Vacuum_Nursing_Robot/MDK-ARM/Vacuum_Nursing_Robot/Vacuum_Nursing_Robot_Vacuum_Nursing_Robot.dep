@@ -48,7 +48,7 @@ I (..\SVC\svc_scheduler.h)(0x6A040FC6)
 I (..\App\app_tasks.h)(0x6A03DE3B)
 I (..\App\app_flow_manager.h)(0x6A04F04F)
 I (D:\keil 5.24a\ARM\ARMCLANG\include\stdbool.h)(0x588CAFD2)
-I (..\App\app_workflows.h)(0x6A054EAB)
+I (..\App\app_workflows.h)(0x6A06BE0D)
 F (../Core/Src/gpio.c)(0x69FE2DAF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/gpio.o -MD)
 I (..\Core\Inc\gpio.h)(0x69FDFFAF)
 I (..\Core\Inc\main.h)(0x69FE2DB1)
@@ -774,7 +774,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6967A4FC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x6967A4FC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x6967A4FC)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6967A4FC)
-F (..\App\hmi.c)(0x6A054F6B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/hmi.o -MD)
+F (..\App\hmi.c)(0x6A06D7CB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/hmi.o -MD)
 I (..\Core\Inc\main.h)(0x69FE2DB1)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6967A4FC)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x69FDFFB0)
@@ -816,7 +816,7 @@ I (..\Middleware\cmd_process.h)(0x69831084)
 I (..\Bsp\bsp_actuator.h)(0x6A028552)
 I (..\App\app_flow_manager.h)(0x6A04F04F)
 I (D:\keil 5.24a\ARM\ARMCLANG\include\stdbool.h)(0x588CAFD2)
-I (..\App\app_workflows.h)(0x6A054EAB)
+I (..\App\app_workflows.h)(0x6A06BE0D)
 F (..\App\hmi.h)(0x69116DC1)()
 F (..\App\app_tasks.c)(0x6A052CA1)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/app_tasks.o -MD)
 I (..\SVC\svc_scheduler.h)(0x6A040FC6)
@@ -860,7 +860,7 @@ I (..\Middleware\cmd_queue.h)(0x69116E81)
 I (..\Middleware\cmd_process.h)(0x69831084)
 I (..\App\app_flow_manager.h)(0x6A04F04F)
 I (D:\keil 5.24a\ARM\ARMCLANG\include\stdbool.h)(0x588CAFD2)
-I (..\App\app_workflows.h)(0x6A054EAB)
+I (..\App\app_workflows.h)(0x6A06BE0D)
 F (..\App\app_tasks.h)(0x6A03DE3B)()
 F (..\App\app_flow_manager.c)(0x6A04F07D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/app_flow_manager.o -MD)
 I (..\App\app_flow_manager.h)(0x6A04F04F)
@@ -905,8 +905,8 @@ I (..\Core\Inc\usart.h)(0x69FDFFAF)
 I (..\Middleware\cmd_queue.h)(0x69116E81)
 I (..\Middleware\cmd_process.h)(0x69831084)
 F (..\App\app_flow_manager.h)(0x6A04F04F)()
-F (..\App\app_workflows.c)(0x6A054E2E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/app_workflows.o -MD)
-I (..\App\app_workflows.h)(0x6A054EAB)
+F (..\App\app_workflows.c)(0x6A06BF83)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/app_workflows.o -MD)
+I (..\App\app_workflows.h)(0x6A06BE0D)
 I (..\App\app_flow_manager.h)(0x6A04F04F)
 I (D:\keil 5.24a\ARM\ARMCLANG\include\stdint.h)(0x588CAFD2)
 I (D:\keil 5.24a\ARM\ARMCLANG\include\stdbool.h)(0x588CAFD2)
@@ -948,7 +948,7 @@ I (..\Middleware\hmi_driver.h)(0x69831083)
 I (..\Core\Inc\usart.h)(0x69FDFFAF)
 I (..\Middleware\cmd_queue.h)(0x69116E81)
 I (..\Middleware\cmd_process.h)(0x69831084)
-F (..\App\app_workflows.h)(0x6A054EAB)()
+F (..\App\app_workflows.h)(0x6A06BE0D)()
 F (..\Bsp\bsp_actuator.c)(0x6A028507)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../HardWare/SCREEN -I ../HardWare -I ../App -I ../Bsp -I ../Middleware -I ../SVC-I./RTE/_Vacuum_Nursing_Robot-I"D:/keil 5.24a/ARM/PACK/ARM/CMSIS/5.0.1/CMSIS/Include"-I"D:/keil 5.24a/ARM/PACK/Keil/STM32F4xx_DFP/2.11.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F407xx -DUSE_HAL_DRIVER -DSTM32F407xx-o vacuum_nursing_robot/bsp_actuator.o -MD)
 I (..\Bsp\bsp_actuator.h)(0x6A028552)
 I (..\Core\Inc\main.h)(0x69FE2DB1)

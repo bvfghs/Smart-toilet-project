@@ -23,6 +23,8 @@
 #include "bsp_actuator.h"
 #include "app_flow_manager.h"
 #include "app_workflows.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 uint8_t uart_rx_buf;
  extern volatile  uint32 timer_tick_count;                              
@@ -278,8 +280,8 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 
 	}
 	
-	if(screen_id == 1){  // 手动模式画面id1
-		
+	if(screen_id == 1)   // 手动模式画面id1
+{  
 			if(control_id==5)
 		{
 		  if(state==1)
@@ -322,7 +324,7 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 		  {
 		  FlowManager_Start(&Flow_Dry);//调用干燥工作流程开始
 		  }
-			else
+			else 
 		  {
 		  FlowManager_Stop();//强制停止工作流程
 		  }
@@ -336,6 +338,18 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 		  }
 			else
 		  {
+		  FlowManager_Stop();//强制停止工作流程h
+		  }
+		}
+		
+		if(control_id==10)
+		{
+		  if(state==1)
+		  {
+		  FlowManager_Start(&Flow_VacSelfClean);//调用真空箱清洁工作流程开始
+		  }
+			else
+		  {
 		  FlowManager_Stop();//强制停止工作流程
 		  }
 		}
@@ -343,8 +357,6 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
 	
 	
 	
-
-     
 }
 
 /*! 

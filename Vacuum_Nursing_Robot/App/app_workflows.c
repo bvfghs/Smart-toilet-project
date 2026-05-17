@@ -617,7 +617,7 @@ static FlowStep_t steps_clean[] = {
 // 流程结束回调（复位启动按钮）
 void Flow_OnFinished_Clean(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
-    // SetButtonValue(1, 7, 0);   // 画面1，控件7
+     SetButtonValue(1, 8, 0);   // 画面1，控件8
 }
 
 // 清洗流程定义
@@ -640,17 +640,25 @@ static void step_dry_01_exit(void) {
 
 // 步骤 02: 10min 暖风 (600秒)
 static void step_dry_02_enter(void) {
+	Actuator_HotFan_On(); 
+	Actuator_FanHot_On();
     // TODO: 打开暖风机和加热（例如 Actuator_HotFan_On(); Actuator_FanHot_On();）
 }
 static void step_dry_02_exit(void) {
+	Actuator_HotFan_Off();
+	Actuator_FanHot_Off();
     // TODO: 关闭暖风设备（例如 Actuator_HotFan_Off(); Actuator_FanHot_Off();）
 }
 
 // 步骤 03: 5s 抽污
 static void step_dry_03_enter(void) {
+	Actuator_VacuumFan_On(); 
+	Actuator_Anion_On();
     // TODO: 打开抽污设备（例如 Actuator_VacuumFan_On(); Actuator_Anion_On();）
 }
 static void step_dry_03_exit(void) {
+	Actuator_VacuumFan_Off();
+	Actuator_Anion_Off();
     // TODO: 关闭抽污设备（例如 Actuator_VacuumFan_Off(); Actuator_Anion_Off();）
 }
 
@@ -665,7 +673,7 @@ static FlowStep_t steps_dry[] = {
 // 流程结束回调（复位启动按钮）
 void Flow_OnFinished_Dry(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
-    // SetButtonValue(1, 8, 0);   // 画面1，控件8
+     SetButtonValue(1, 7, 0);   // 画面1，控件7
 }
 
 // 干燥流程定义
@@ -709,7 +717,7 @@ static FlowStep_t steps_clean_air[] = {
 // 流程结束回调（复位启动按钮）
 void Flow_OnFinished_CleanAir(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
-    // SetButtonValue(1, 9, 0);   // 画面1，控件9
+     SetButtonValue(1, 9, 0);   // 画面1，控件9
 }
 
 // 清洁空气流程定义
@@ -733,13 +741,21 @@ static void step_vac_01_exit(void) {
 
 // 步骤 02: 30s 真空箱自清洁
 static void step_vac_02_enter(void) {
-	
+	Actuator_Valve3_On();
+	Actuator_RO_Pump_On();
+	Actuator_Valve4_5_On();
+	Actuator_Valve8_On();
+	Actuator_VacuumFan_On();
 	
     // TODO: 打开真空箱自清洁相关设备（例如特定阀门、泵等）
     // 请根据实际硬件填写，如 Actuator_ValveX_On(); Actuator_Pump_On(); 等
 }
 static void step_vac_02_exit(void) {
-	
+	Actuator_Valve3_Off();
+	Actuator_RO_Pump_Off();
+	Actuator_Valve4_5_Off();
+	Actuator_Valve8_Off();
+	Actuator_VacuumFan_Off();
 	
     // TODO: 关闭真空箱自清洁设备
 }
@@ -754,7 +770,7 @@ static FlowStep_t steps_vac_selfclean[] = {
 // 流程结束回调（复位启动按钮）
 void Flow_OnFinished_VacSelfClean(void) {
     // TODO: 根据实际屏幕控件ID复位启动按钮，例如：
-    // SetButtonValue(1, 10, 0);   // 画面1，控件10
+     SetButtonValue(1, 10, 0);   // 画面1，控件10
 }
 
 // 真空箱自清洁流程定义

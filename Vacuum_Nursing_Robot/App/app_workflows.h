@@ -9,6 +9,7 @@ extern const FlowDef_t Flow_Urinate;    // 小便冲洗
 extern const FlowDef_t Flow_Clean;      // 清洗模式
 extern const FlowDef_t Flow_Dry;       // 干燥模式
 extern const FlowDef_t Flow_CleanAir;  // 空气清洁模式
+extern const FlowDef_t Flow_VacSelfClean;// 真空桶清洁模式
 
 // 提供流程结束时的回调（用于复位按钮）
 void Flow_OnFinished_Defecate(void); // 大便冲洗结束回调
@@ -16,6 +17,7 @@ void Flow_OnFinished_Urinate(void);   // 小便冲洗结束回调
 void Flow_OnFinished_Clean(void);    // 清洁模式结束回调
 void Flow_OnFinished_Dry(void);      // 干燥模式结束回调
 void Flow_OnFinished_CleanAir(void);  // 空气清洁模式结束回调
+void Flow_OnFinished_VacSelfClean(void);// 真空桶清洁模式结束回调
 	
 /* ---------- 通用：动态修改任意流程的步骤时间 ---------- */
 bool Flow_SetStepDuration(const FlowDef_t* flow, uint8_t step_idx, uint32_t seconds);//写工作流程步骤时间 flow工作流程，step_idx步骤序号，seconds步骤秒数
