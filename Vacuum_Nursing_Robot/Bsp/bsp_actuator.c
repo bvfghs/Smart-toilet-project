@@ -1,4 +1,36 @@
 #include "bsp_actuator.h"
+#include "tim.h" 
+
+//RO泵高低档位占空比
+uint8_t g_ro_pump_speed_low = 50; // 低速档位（%）
+uint8_t g_ro_pump_speed_high = 90; // 高速档位（%）
+
+/**
+ * @brief 设置 TIM3 指定通道的 PWM 占空比（0~100%）10khz频率
+ * @param channel   通道号（TIM_CHANNEL_1 ~ TIM_CHANNEL_4）
+ * @param duty      占空比百分比（0~100）
+ * @retval 0=成功，-1=通道不支持或未初始化
+ */
+int TIM3_SetDuty(uint32_t channel, uint8_t duty) {
+    if (duty > 100) duty = 100;
+    uint32_t arr = __HAL_TIM_GET_AUTORELOAD(&htim3);
+    uint32_t ccr = ((arr + 1) * duty) / 100;
+
+    switch (channel) {
+        case TIM_CHANNEL_3:
+            __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, ccr);
+            return 0;
+        // 其他通道预留，如需要请手动初始化 GPIO 和 PWM 通道
+        case TIM_CHANNEL_1:
+        case TIM_CHANNEL_2:
+        case TIM_CHANNEL_4:
+        default:
+        return -1;   // 尚未实现
+    }
+}
+
+
+
 
 /* 阀1 */
 void Actuator_Valve1_On(void)  { HAL_GPIO_WritePin(valve_1_GPIO_Port, valve_1_Pin, GPIO_PIN_SET); }
@@ -36,9 +68,22 @@ void Actuator_Valve9_Off(void) { HAL_GPIO_WritePin(valve_9_GPIO_Port, valve_9_Pi
 void Actuator_Valve10_On(void)  { HAL_GPIO_WritePin(valve_10_GPIO_Port, valve_10_Pin, GPIO_PIN_SET); }
 void Actuator_Valve10_Off(void) { HAL_GPIO_WritePin(valve_10_GPIO_Port, valve_10_Pin, GPIO_PIN_RESET); }
 
+
+
 /* 大RO泵 */
-void Actuator_RO_Pump_On(void)  { HAL_GPIO_WritePin(RO_pump_GPIO_Port, RO_pump_Pin, GPIO_PIN_SET); }
-void Actuator_RO_Pump_Off(void) { HAL_GPIO_WritePin(RO_pump_GPIO_Port, RO_pump_Pin, GPIO_PIN_RESET); }
+
+// 直接控制 RO 泵（使用 TIM3_CH3） PB0 duty为0到100占空比
+void Actuator_RO_Pump_pwm_SetSpeed(uint8_t duty) {
+    TIM3_SetDuty(TIM_CHANNEL_3, duty);
+}
+
+// 原有的 On/Off 可整合
+void Actuator_RO_Pump_On(void) { HAL_GPIO_WritePin(RO_pump_INT1_GPIO_Port, RO_pump_INT1_Pin, GPIO_PIN_SET);}
+
+void Actuator_RO_Pump_Off(void) {HAL_GPIO_WritePin(RO_pump_INT1_GPIO_Port, RO_pump_INT1_Pin, GPIO_PIN_RESET);}
+
+
+
 
 /* 小RO泵 */
 void Actuator_S_RO_Pump_On(void)  { HAL_GPIO_WritePin(S_RO_pump_GPIO_Port, S_RO_pump_Pin, GPIO_PIN_SET); }

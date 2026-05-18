@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define RO_pump_pwm_Pin GPIO_PIN_0
+#define RO_pump_pwm_GPIO_Port GPIOB
 #define H_vacuum_fan_Pin GPIO_PIN_2
 #define H_vacuum_fan_GPIO_Port GPIOB
 #define water_hot_Pin GPIO_PIN_7
@@ -69,8 +71,10 @@ void Error_Handler(void);
 #define hot_fan_GPIO_Port GPIOE
 #define fan_hot_Pin GPIO_PIN_10
 #define fan_hot_GPIO_Port GPIOE
-#define RO_pump_Pin GPIO_PIN_13
-#define RO_pump_GPIO_Port GPIOE
+#define RO_pump_INT2_Pin GPIO_PIN_12
+#define RO_pump_INT2_GPIO_Port GPIOE
+#define RO_pump_INT1_Pin GPIO_PIN_13
+#define RO_pump_INT1_GPIO_Port GPIOE
 #define S_RO_pump_Pin GPIO_PIN_14
 #define S_RO_pump_GPIO_Port GPIOE
 #define debug_TX_Pin GPIO_PIN_10

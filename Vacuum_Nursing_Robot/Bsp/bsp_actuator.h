@@ -3,6 +3,9 @@
 
 #include "main.h"   // 提供引脚宏
 
+
+extern uint8_t g_ro_pump_speed_low ; // 低速档位（%）
+extern uint8_t g_ro_pump_speed_high ; // 高速档位（%）
 /* ========== 阀类 ========== */
 void Actuator_Valve1_On(void);
 void Actuator_Valve1_Off(void);
@@ -32,7 +35,9 @@ void Actuator_Valve10_On(void);
 void Actuator_Valve10_Off(void);
 
 /* ========== 泵与风机 ========== */
-void Actuator_RO_Pump_On(void);
+
+void Actuator_RO_Pump_pwm_SetSpeed(uint8_t duty);// 直接控制 RO 泵（使用 TIM3_CH3） PB0 duty为0到100占空比
+void Actuator_RO_Pump_On(void);//控制使能引脚
 void Actuator_RO_Pump_Off(void);
 
 void Actuator_S_RO_Pump_On(void);

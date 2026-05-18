@@ -22,8 +22,6 @@
 #include "usart.h"
 #include "gpio.h"
 
-
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_actuator.h"
@@ -104,11 +102,17 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_TIM6_Init();//暂时无用，可能配合引脚用于pwm输出
-  MX_USART1_UART_Init();//串口屏通讯用
-  MX_USART3_UART_Init();//电脑串口调试用
-	 BSP_Console_Init();//重定向printf用于调试，暂时无用
+  MX_TIM6_Init();
+  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+	
+	// 启动 TIM3 通道3 的 PWM 输出
+if (HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3) != HAL_OK) {
+    Error_Handler();
+}
+
 	
 	
 	queue_reset();
@@ -133,7 +137,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-   
+		
 		Sched_Run();//任务调度器用于执行注册的任务
 		
 //	HAL_GPIO_TogglePin(valve_1_GPIO_Port,valve_1_Pin);
@@ -144,12 +148,12 @@ int main(void)
       printf("rx: %02X\r\n", debug_rx_byte);  // 安全输出到电脑串口
     }
 		
-		
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
-
 
 /**
   * @brief System Clock Configuration
@@ -230,4 +234,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-

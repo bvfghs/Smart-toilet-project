@@ -343,7 +343,20 @@ void NotifyButton(uint16 screen_id, uint16 control_id, uint8  state)
             case 13: if(state) Actuator_H_VacuumFan_On(); else Actuator_H_VacuumFan_Off(); break;
             case 14: if(state) Actuator_HotFan_On(); else Actuator_HotFan_Off(); break;
             case 15: if(state) Actuator_FanHot_On(); else Actuator_FanHot_Off(); break;
-            case 16: if(state) Actuator_RO_Pump_On(); else Actuator_RO_Pump_Off(); break;
+         
+					  case 16:   // RO泵控制（引入PWM调速）
+                    if(state) {
+                        // 开启时：先设置PWM占空比（使用高速档位值，默认为100%），再使能电机
+                        Actuator_RO_Pump_pwm_SetSpeed(g_ro_pump_speed_high);
+                        Actuator_RO_Pump_On();
+                    } else {
+                        // 关闭时：先停止PWM输出，再失能电机
+                        Actuator_RO_Pump_pwm_SetSpeed(0);
+                        Actuator_RO_Pump_Off();
+                    }
+                    break;
+					
+					
             case 17: if(state) Actuator_S_RO_Pump_On(); else Actuator_S_RO_Pump_Off(); break;
             case 18: if(state) Actuator_WaterHot_On(); else Actuator_WaterHot_Off(); break;
             default: break;

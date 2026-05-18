@@ -57,7 +57,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, water_hot_Pin|vacuum_fan_Pin|hot_fan_Pin|fan_hot_Pin
-                          |RO_pump_Pin|S_RO_pump_Pin, GPIO_PIN_RESET);
+                          |RO_pump_INT2_Pin|RO_pump_INT1_Pin|S_RO_pump_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, valve_7_Pin|valve_8_Pin|valve_9_Pin|valve_10_Pin
@@ -72,9 +72,9 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(H_vacuum_fan_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : water_hot_Pin vacuum_fan_Pin hot_fan_Pin fan_hot_Pin
-                           RO_pump_Pin S_RO_pump_Pin */
+                           RO_pump_INT2_Pin RO_pump_INT1_Pin S_RO_pump_Pin */
   GPIO_InitStruct.Pin = water_hot_Pin|vacuum_fan_Pin|hot_fan_Pin|fan_hot_Pin
-                          |RO_pump_Pin|S_RO_pump_Pin;
+                          |RO_pump_INT2_Pin|RO_pump_INT1_Pin|S_RO_pump_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
